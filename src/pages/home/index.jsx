@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <>
       {pageViewed ? <LayoutHome /> : <LayoutHome />}
-      <main className="relative min-h-screen w-screen overflow-x-hidden">
+      <main className="relative min-h-screen  overflow-x-hidden">
         <Hero />
         <div className="px-[2.5rem] max-laptop:px-[1rem]">
           <AboutUs />

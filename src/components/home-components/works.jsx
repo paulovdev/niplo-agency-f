@@ -30,14 +30,14 @@ const Work = ({ name, category, src, year }) => {
 
   return (
     <motion.div
-      className="w-full max-tablet:h-[45vh]"
+      className="w-full"
       ref={ref}
       variants={workAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
     >
       <motion.div
-        className="relative size-full select-auto pointer-events-auto"
+        className="relative size-full select-auto pointer-events-auto "
         initial="initial"
         whileHover="hover"
       >
@@ -52,9 +52,9 @@ const Work = ({ name, category, src, year }) => {
           onClick={handleClick}
         />
 
-        <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none">
+        <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
           <motion.div className="relative size-full" variants={textAnim}>
-            <div className="w-full h-[30px] flex items-center justify-between"></div>
+            <div className="w-full h-[30px] flex items-center justify-between max-tablet:hidden"></div>
 
             <div className="w-full flex items-center justify-between">
               <div className="w-full flex items-center gap-[1.5rem]">

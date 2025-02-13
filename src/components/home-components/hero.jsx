@@ -57,7 +57,7 @@ const Hero = () => {
           >
             <h1
               variants={h1SlideTextAnim}
-              className="text-[15vw] text-center text-color3 font-[400] leading-[1]"
+              className="text-[15vw] text-center text-color3 font-[400] leading-[1] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]"
             >
               AGÊNCIA
             </h1>
@@ -67,13 +67,13 @@ const Hero = () => {
             />
             <h1
               variants={h1SlideTextAnim}
-              className="text-[15vw] text-center text-color3 font-[400] leading-[1]"
+              className="text-[15vw] text-center text-color3 font-[400] leading-[1] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]"
             >
               N
             </h1>
             <motion.h1
               variants={h1SlideTextAnim}
-              className="h-full text-[8vw] text-color3 font-[600] "
+              className="h-full text-[8vw] text-color3 font-[600] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]"
             >
               &#174;
             </motion.h1>

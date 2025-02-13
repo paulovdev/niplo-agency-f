@@ -43,7 +43,7 @@ const Menu = ({ menuToggle, setMenuToggle }) => {
         className="fixed w-full h-0 top-0 right-0 bg-background4 backdrop-blur-3xl select-none overflow-hidden z-[60]"
       >
         {/* TOP-NAVBAR */}
-        <div className="fixed w-full h-[50px] top-[3px] pb-[3rem] pt-[1.5rem] px-[2.5rem] flex items-center z-50 pointer-events-none select-none">
+        <div className="fixed w-full h-[50px] top-[3px] pb-[3rem] pt-[1.5rem] px-[1rem] flex items-center z-50 pointer-events-none select-none">
           <ul className="w-full flex items-center justify-end">
             {/* CLOSE */}
             <li className="w-fit h-[20px] overflow-hidden cursor-pointer pointer-events-auto">

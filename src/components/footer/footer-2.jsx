@@ -8,9 +8,9 @@ const Footer2 = () => {
     setModalToggle(!modalToggle);
   };
   return (
-    <section className="relative w-screen h-[80dvh] px-[2.5rem] overflow-hidden border-t border-border">
+    <section className="relative w-full h-[80dvh] overflow-hidden border-t border-border ">
       <div className="size-full flex flex-col justify-center items-center select-none">
-        <h1 className="w-full mb-[3rem] text-[8vw] text-color text-center font-[400] leading-[1] uppercase max-laptop:flex max-laptop:items-center max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]">
+        <h1 className="w-full mb-[3rem] text-[8vw] text-color text-center font-[400] leading-[1] uppercase max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]">
           vamos trabalhar juntos?
         </h1>
         <button

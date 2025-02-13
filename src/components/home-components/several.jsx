@@ -42,7 +42,7 @@ const Several = () => {
         onMouseLeave={handleLeave}
       />
 
-      <div className="absolute size-fit left-[47%] max-tablet:left-[45%] pointer-events-none">
+      <div className="absolute pointer-events-none">
         {isPlaying ? (
           <IoMdPause
             color="#fff"

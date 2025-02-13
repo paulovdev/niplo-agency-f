@@ -32,7 +32,7 @@ export default function LayoutHome({ children }) {
       >
         <div className="w-full h-full flex items-end justify-center ">
           <motion.p
-            className="relative text-color3 font-general text-[.9rem] tracking-[-.5px] font-[400] uppercase animate-pulse"
+            className="relative text-color3 text-center font-general text-[.9rem] tracking-[-.5px] font-[400] uppercase animate-pulse"
             variants={pAnim}
             initial="initial"
             animate="animate"
@@ -41,7 +41,7 @@ export default function LayoutHome({ children }) {
             {selectedText}
           </motion.p>
         </div>
-        <div className="w-full h-full flex items-end justify-end overflow-hidden max-laptop:items-start">
+        <div className="w-full h-full flex items-end justify-end overflow-hidden">
           <motion.div
             className="w-full p-[2.5rem] flex items-center justify-center gap-[1rem]"
             variants={h1SlideTextAnim}

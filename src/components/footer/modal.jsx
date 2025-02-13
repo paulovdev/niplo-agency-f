@@ -137,7 +137,7 @@ const Modal = ({ modalToggle, setModalToggle }) => {
         onClick={() => setModalToggle(false)}
         className={`fixed w-screen h-screen top-0 right-0 backdrop-blur-md z-[99] ${
           modalToggle ? "pointer-events-auto" : "pointer-events-none"
-        }`}
+        } ${isTablet && "hidden"}`}
       ></motion.div>
     </>
   );
