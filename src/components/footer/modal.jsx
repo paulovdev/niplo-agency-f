@@ -59,6 +59,7 @@ const Modal = ({ modalToggle, setModalToggle }) => {
   return (
     <>
       <motion.form
+        onSubmit={(e) => e.preventDefault()}
         variants={modalAnim}
         initial="close"
         animate={modalToggle ? "open" : "close"}

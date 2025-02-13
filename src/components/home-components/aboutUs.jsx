@@ -24,6 +24,7 @@ const AboutUs = () => {
           ✦ um pouco sobre nós
         </h2>
       </div>
+
       <div className="w-full flex-[3] flex flex-col items-start justify-start">
         {paragraph.map((text, i) => (
           <div className="w-full overflow-hidden">
@@ -33,7 +34,7 @@ const AboutUs = () => {
               variants={pSlideParagraphAnim}
               initial="initial"
               animate={inView ? "animate" : ""}
-              className="mb-[1rem] font-general text-color text-[1rem] font-[500] tracking-[-.7px] uppercase"
+              className="mb-[1rem] font-general text-color text-[.9rem] font-[500] tracking-[-.9px] uppercase"
             >
               {text}
             </motion.p>
