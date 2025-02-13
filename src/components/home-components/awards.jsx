@@ -22,8 +22,8 @@ const Award = ({ title, description, id }) => {
       initial="initial"
       className="relative w-full h-full flex items-center flex-col border-border border-b-2 select-none pointer-events-auto"
     >
-      <div className="w-full p-[.5rem] grid grid-cols-3">
-        <div className="w-full h-full flex items-center">
+      <div className="w-full p-[.5rem] flex items-center">
+        <div className="w-full h-full flex items-center max-tablet:w-1/3">
           <span className="text-color2 font-general text-[.9rem] font-[400] tracking-[-.4px] leading-[1.3] max-tablet:text-[.7rem]">
             {id}
           </span>
