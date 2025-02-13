@@ -22,7 +22,7 @@ export default function LayoutHome({ children }) {
   }, []);
 
   return (
-    <div className="page stairs ">
+    <div className="page stairs">
       <motion.div
         className="transition-text flex flex-col items-center justify-center "
         variants={textAnim}

@@ -80,7 +80,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.p
-            className="max-w-[600px] w-full text-color3 font-general text-[.9rem] tracking-[-.5px] font-[400] uppercase max-tablet:text-[.8rem]"
+            className="max-w-[600px] w-full text-color3 font-general text-[.9rem] tracking-[-.5px] font-[400] uppercase max-tablet:text-[.7rem]"
             variants={pSlideTextAnim}
             initial="initial"
             animate="animate"
