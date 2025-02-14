@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useWindowScroll } from "react-use";
 import { AnimatePresence, motion } from "framer-motion";
 import { dropYAnim, menu, navigationsTextAnim } from "./anim";
+import { useAp } from "@/context/ap-context";
 
 const PerspectiveMenuText = ({ label }) => (
   <div className="size-full bg-none">
-    <div className="text-color3 font-general text-[.9rem] font-[400] tracking-[-.5px] uppercase cursor-pointer">
+    <div className="text-color3 font-general text-[1rem] font-[400] tracking-[-.5px] uppercase cursor-pointer">
       {label}
     </div>
   </div>
@@ -18,14 +19,14 @@ const HamburguerMenu = ({ isOpen, onClick }) => (
     onClick={onClick}
   >
     <motion.div
-      className="w-[25px] h-[2px] bg-white transition-all duration-500"
+      className="w-[25px] h-[2px] bg-black transition-all duration-500"
       style={{
         translateY: isOpen ? "3px" : "0",
         rotate: isOpen ? "32deg" : "0",
       }}
     />
     <motion.div
-      className="w-[25px] h-[2px] bg-white transition-all duration-500"
+      className="w-[25px] h-[2px] bg-black transition-all duration-500"
       style={{
         translateY: isOpen ? "-3px" : "0",
         rotate: isOpen ? "-32deg" : "0",
@@ -35,12 +36,11 @@ const HamburguerMenu = ({ isOpen, onClick }) => (
 );
 
 const MenuContent = ({ isOpen }) => {
+   const {selectedAp, setSelectedAp} = useAp();
   const navigationsMenuText = [
-    { name: "Home" },
-    { name: "About" },
-    { name: "Contact" },
-    { name: "Works" },
-    { name: "Blog" },
+    { name: "GRADE" , change:"grid"},
+    { name: "Lista",change:"list" },
+    { name: "Mansory" },
   ];
 
   return (
@@ -51,7 +51,7 @@ const MenuContent = ({ isOpen }) => {
       animate={isOpen ? "open" : "close"}
     >
       <motion.div
-        className="w-full p-[1rem] grid grid-cols-3 grid-rows-2 gap-[1.5rem]"
+        className="w-full p-[1rem] flex flex-col justify-center items-center gap-[1.5rem]"
         initial={{ opacity: 0 }}
         animate={{
           opacity: isOpen ? 1 : 0,
@@ -64,19 +64,20 @@ const MenuContent = ({ isOpen }) => {
         }}
       >
         <p className="w-full col-span-3 text-center text-color3 font-general font-[500] text-[.85rem] uppercase border-b border-border2">
-          SUB MENU
+          MODO DE APRESENTACAO
         </p>
 
         {navigationsMenuText.map((item) => (
           <div
             key={item.name}
-            className="w-full h-[25px] mb-4 overflow-hidden cursor-pointer"
+            className="w-full h-[25px] my-[6px] overflow-hidden cursor-pointer"
           >
             <motion.div
               className="relative size-full"
               variants={navigationsTextAnim}
               initial="initial"
               whileHover="hover"
+             onClick={() =>setSelectedAp(item.change)}
             >
               <PerspectiveMenuText label={item.name} />
               <PerspectiveMenuText label={item.name} />

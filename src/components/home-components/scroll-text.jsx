@@ -100,7 +100,7 @@ const ScrollText = () => {
               className="absolute w-full flex flex-col items-center justify-center text-center"
             >
               <div className={`${section.id}-h1-text opacity-0`}>
-                <h1 className="text-[8vw] text-color font-[500] tracking-[1px] uppercase max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]">
+                <h1 className="text-[8vw] text-color font-[500] tracking-[-3px] uppercase max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]">
                   <span className="mr-2 text-sm font-robert-medium tracking-[1px]">
                     {section.number}
                   </span>

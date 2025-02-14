@@ -64,7 +64,7 @@ const Awards = () => {
       <div className="w-full h-fit mx-auto my-0 flex items-start justify-start max-laptop:flex-col">
         <div className="w-full flex-[2] max-laptop:mb-[2.5rem]">
           <h2 className="font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase">
-            AWARDS
+            PRÊMIOS
           </h2>
         </div>
 

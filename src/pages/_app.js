@@ -7,6 +7,7 @@ import { PlayingVideoProvider } from "@/context/several-context";
 import Footer from "@/components/footer/footer";
 import Lenis from "@studio-freight/lenis";
 import { useRef, useEffect } from "react";
+import { ApProvider } from "@/context/ap-context";
 
 export default function App({ Component, pageProps, router }) {
   const lenisRef = useRef(null);
@@ -33,14 +34,16 @@ export default function App({ Component, pageProps, router }) {
   return (
     <div className="main noise">
       <CursorProvider>
-        <PlayingVideoProvider>
-          <Cursor />
-          <Nav />
-          <AnimatePresence mode="wait">
-            <Component key={router.route} {...pageProps} />
-          </AnimatePresence>
-          <Footer />
-        </PlayingVideoProvider>
+        <ApProvider>
+          <PlayingVideoProvider>
+            <Cursor />
+            <Nav />
+            <AnimatePresence mode="wait">
+              <Component key={router.route} {...pageProps} />
+            </AnimatePresence>
+            <Footer />
+          </PlayingVideoProvider>
+        </ApProvider>
       </CursorProvider>
     </div>
   );

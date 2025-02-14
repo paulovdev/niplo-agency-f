@@ -6,8 +6,7 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { useCursor } from "@/context/cursor-context";
 import { appearAwardAnim, imgZoom } from "./anim";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const Blog = ({ id, img, title, category, min, titleDescription }) => {
   const { setCursorVariant } = useCursor();
@@ -32,7 +31,7 @@ const Blog = ({ id, img, title, category, min, titleDescription }) => {
     >
       <motion.div variants={imgZoom} custom={id} whileHover="hover">
         <Image
-          className="relative w-[250px] h-[150px] rounded-[.5rem] object-cover brightness-[85%] pointer-events-auto max-tablet:w-full max-tablet:h-full"
+          className="relative w-[250px] h-[150px] rounded-[.5rem] object-cover brightness-[85%] pointer-events-auto max-tablet:w-full max-tablet:h-[400px]"
           src={img}
           width={800}
           height={800}
@@ -65,49 +64,40 @@ const Blogs = () => {
     threshold: 0.5,
     triggerOnce: true,
   });
-  const container = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0vh", "65vh"]);
   return (
     <section className="relative w-full h-[75dvh]" ref={ref}>
-      <motion.div ref={container} style={{ top: y }} className="absolute">
-        <h2 className="mb-[2.5rem] font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase flex items-center gap-[.5rem]">
-          SALA DE IMPRENSA /
-          <Link
-            className="w-fit bg-background rounded-[2rem] underline select-auto pointer-events-auto"
-            href="/blog"
-          >
-            TODOS OS BLOGS
-          </Link>
-        </h2>
+      <h2 className="mb-[2.5rem] font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase flex items-center gap-[.5rem]">
+        SALA DE IMPRENSA /
+        <Link
+          className="w-fit bg-background rounded-[2rem] underline select-auto pointer-events-auto"
+          href="/blog"
+        >
+          TODOS OS BLOGS
+        </Link>
+      </h2>
 
-        {blogsData.slice(0, 3).map((blog, i) => (
-          <motion.div
-            key={i}
-            custom={i}
-            variants={appearAwardAnim}
-            initial="initial"
-            animate={inView ? "animate" : ""}
-            className="mb-[1.5rem]"
-          >
-            <Link href={`/blog/${blog.id}`} key={i}>
-              <Blog
-                id={blog.id}
-                img={blog.img}
-                title={blog.title}
-                category={blog.category}
-                min={blog.min}
-                titleDescription={blog.titleDescription}
-              />
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+      {blogsData.slice(0, 3).map((blog, i) => (
+        <motion.div
+          key={i}
+          custom={i}
+          variants={appearAwardAnim}
+          initial="initial"
+          animate={inView ? "animate" : ""}
+          className="mb-[1.5rem]"
+        >
+          <Link href={`/blog/${blog.id}`} key={i}>
+            <Blog
+              id={blog.id}
+              img={blog.img}
+              title={blog.title}
+              category={blog.category}
+              min={blog.min}
+              titleDescription={blog.titleDescription}
+            />
+          </Link>
+        </motion.div>
+      ))}
     </section>
   );
 };

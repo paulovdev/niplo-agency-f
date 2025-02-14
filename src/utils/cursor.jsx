@@ -8,6 +8,7 @@ import { useCursor } from "@/context/cursor-context";
 import { useMedia } from "react-use";
 import { useEffect, useState } from "react";
 import { usePlayVideo } from "@/context/several-context";
+import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
 
 export const Cursor = () => {
   const { cursorVariant } = useCursor();
@@ -75,11 +76,10 @@ export const Cursor = () => {
     <>
       {!isTablet && (
         <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[50]"
+          className="fixed top-0 left-0 pointer-events-none z-[50] "
           variants={variants}
           animate={cursorVariant}
         >
-          {" "}
           <AnimatePresence mode="wait">
             {cursorVariant === "workSingle" && (
               <motion.div
@@ -107,7 +107,7 @@ export const Cursor = () => {
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
               >
                 <p className="text-color3 text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase">
-                  {isPlaying ? "pausar" : "assistir"}
+                  {isPlaying ? "clique para pausar" : "clique para assistir"}
                 </p>
               </motion.div>
             )}
@@ -121,10 +121,12 @@ export const Cursor = () => {
                 }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
               >
-                <p className="text-color text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase flex-nowrap">
-                  {scrollDirection === "down"
-                    ? "role para baixo"
-                    : "role para cima"}
+                <p className="text-color text-[2rem]">
+                  {scrollDirection === "down" ? (
+                    <RiArrowDownLine />
+                  ) : (
+                    <RiArrowUpLine />
+                  )}
                 </p>
               </motion.div>
             )}
