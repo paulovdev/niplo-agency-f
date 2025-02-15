@@ -30,7 +30,7 @@ const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
 
   return (
     <motion.div
-      className="relative size-full flex items-center justify-start gap-[1.5rem] mb-0 flex-col cursor-default group"
+      className="relative size-full flex items-center justify-start gap-[1.5rem] mb-0 flex-col cursor-default"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -39,7 +39,7 @@ const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
       initial="initial"
       animate={inView ? "animate" : "initial"}
     >
-      <div>
+      <div className="w-full">
         <Image
           className="relative w-full h-[400px] rounded-[.5rem] object-cover brightness-[85%] pointer-events-auto"
           src={img}
@@ -58,7 +58,7 @@ const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
       </div>
 
       <div className="w-full flex-[1] max-tablet:w-full">
-        <h2 className="pb-[.5rem] text-color font-general uppercase text-[1rem] tracking-[-.3px] font-[600] leading-[1.1] group-hover:underline ">
+        <h2 className="pb-[.5rem] text-color font-general uppercase text-[1rem] tracking-[-.3px] font-[600] leading-[1.1]">
           {title}
         </h2>
         <p className="text-color2 font-robert-regular text-[.9rem] tracking-[-.2px] leading-[1.3] ">
@@ -70,31 +70,14 @@ const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
 };
 
 const BlogList = ({ id, img, title, category, min, titleDescription }) => {
-  const { setCursorVariant } = useCursor();
-
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
 
-  const handleMouseEnter = () => {
-    setCursorVariant("blog");
-  };
-
-  const handleMouseLeave = () => {
-    setCursorVariant("default");
-  };
-
-  const handleClick = () => {
-    handleMouseLeave();
-  };
-
   return (
     <motion.div
       className="relative size-full flex items-center justify-start gap-[1.5rem] max-tablet:mb-0 cursor-default group"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
       ref={ref}
       variants={blogAnimation}
       initial="initial"

@@ -1,16 +1,18 @@
-import TextSlide from "@/components/reusable/text-slide";
-
-const Hero = ({ category, title }) => {
+const Hero = ({ category, title, min }) => {
   return (
     <section className="relative max-w-[1000px] mx-auto py-[4rem] flex flex-col justify-center items-center">
-      <span className="mb-[1rem] text-color2  text-[.9rem] font-[500] uppercase tracking-[-.5px]">
-        {category}
-      </span>
-      <TextSlide
-        color="text-center text-color !text-[3rem] !tracking-[-4px] !leading-[1.2] uppercase"
-        phrases={[title]}
-        rightContentBol={false}
-      />
+      <div className="mb-4 flex items-center gap-2 text-color2 font-robert-regular text-[.9rem] font-[500] uppercase tracking-[-.5px]">
+        <span>{category}</span>
+        <span>•</span>
+        <span>{min}</span>
+      </div>
+
+      <h2
+        className="w-full text-center text-[3rem] text-color font-[500] tracking-[-2px] leading-none uppercase 
+      max-laptop:font-[600]"
+      >
+        {[title]}
+      </h2>
     </section>
   );
 };

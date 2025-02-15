@@ -118,10 +118,10 @@ body {
   }
   .blog-text {
     h1 {
-      @apply mb-[2rem] text-[2.5rem] font-[500] tracking-[-.5px] leading-[1.2] uppercase max-tablet:text-[2rem] max-mobile:text-[1.5rem];
+      @apply mb-[2rem] text-[2.5rem] font-[500] font-inter tracking-[-2px] leading-[1.2] uppercase max-tablet:text-[2rem] max-mobile:text-[1.5rem];
     }
     p {
-      @apply mt-[2.14em] mb-[-0.46em] text-[#303030] text-[18px] font-[400] tracking-[-0.003em] leading-[28px] max-tablet:text-[1rem];
+      @apply mt-[2.1rem] mb-[-0.46em] text-[#303030] text-[18px] font-[400] tracking-[-0.003em] leading-[28px] max-tablet:text-[1rem];
     }
     b {
       @apply tracking-[-1px] font-[600];
@@ -136,10 +136,12 @@ body {
 .blog-text > p:first-of-type::first-letter {
   initial-letter: 2 2;
   color: #070707;
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
   font-weight: bolder;
 
   font-family: "Times New Roman", Times, serif;
+
+
 }
 
 .stairs .transition-container {

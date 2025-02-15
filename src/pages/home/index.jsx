@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Agência N® - Design, Inovação e Experiências Digitais</title>
+        <title>Agência N® | Design, Inovação e Experiências Digitais</title>
         <meta
           name="description"
           content="A Agência N® é especialista em design, websites interativos e animações digitais que elevam a experiência do usuário ao próximo nível."

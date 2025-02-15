@@ -1,37 +1,16 @@
-"use client";
-
 import Image from "next/image";
 import blogsData from "@/data/blogsData";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-import { useCursor } from "@/context/cursor-context";
-import { appearAwardAnim, imgZoom } from "./anim";
 import { motion } from "framer-motion";
+import { blogAnimation } from "../blog-components/anim";
 
 const Blog = ({ id, img, title, category, min, titleDescription }) => {
-  const { setCursorVariant } = useCursor();
-
-  const handleMouseEnter = () => {
-    setCursorVariant("blog");
-  };
-
-  const handleMouseLeave = () => {
-    setCursorVariant("default");
-  };
-
-  const handleClick = () => {
-    handleMouseLeave();
-  };
   return (
-    <div
-      className="relative size-full flex items-center justify-start gap-[1.5rem] max-tablet:mb-0 max-tablet:flex-col cursor-default group"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    >
-      <motion.div variants={imgZoom} custom={id} whileHover="hover">
+    <div className="relative size-full flex items-center justify-start gap-[1.5rem] max-tablet:mb-0 cursor-default group">
+      <div>
         <Image
-          className="relative w-[250px] h-[150px] rounded-[.5rem] object-cover brightness-[85%] pointer-events-auto max-tablet:w-full max-tablet:h-[400px]"
+          className="relative w-[250px] h-[150px] rounded-[.5rem] object-cover brightness-[85%] pointer-events-auto max-tablet:w-[200px] max-tablet:h-[125px]"
           src={img}
           width={800}
           height={800}
@@ -45,7 +24,7 @@ const Blog = ({ id, img, title, category, min, titleDescription }) => {
             {min}
           </span>
         </div>
-      </motion.div>
+      </div>
 
       <div className="w-[600px] flex-[1] max-tablet:w-full">
         <h2 className="pb-[.5rem] text-color font-general uppercase text-[1rem] tracking-[-.3px] font-[600] leading-[1.1] group-hover:underline ">
@@ -77,11 +56,11 @@ const Blogs = () => {
         </Link>
       </h2>
 
-      {blogsData.slice(0, 3).map((blog, i) => (
+      {blogsData.slice(0, 4).map((blog, i) => (
         <motion.div
           key={i}
           custom={i}
-          variants={appearAwardAnim}
+          variants={blogAnimation}
           initial="initial"
           animate={inView ? "animate" : ""}
           className="mb-[1.5rem]"

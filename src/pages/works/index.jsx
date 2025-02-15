@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { dropYAnim } from "@/components/works-components/anim";
 import Hero from "@/components/works-components/hero";
 import Menu from "@/components/reusable/menu/menu";
@@ -25,6 +26,46 @@ const WorksPage = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Agência N® | Trabalhos</title>
+        <meta
+          name="description"
+          content="Confira nosso portfólio de projetos inovadores! A Agência N® cria experiências digitais únicas, combinando design, animações e tecnologia."
+        />
+        <meta
+          name="keywords"
+          content="portfólio, design digital, desenvolvimento web, UI/UX, animações interativas"
+        />
+        <meta name="author" content="Agência N®" />
+
+        <meta
+          property="og:title"
+          content="Trabalhos | Agência N® - Design e Web Inovadores"
+        />
+        <meta
+          property="og:description"
+          content="Explore nossos trabalhos de design digital e websites inovadores, desenvolvidos para criar experiências impactantes."
+        />
+        <meta property="og:image" content="/images/portfolio-preview.jpg" />
+        <meta
+          property="og:url"
+          content="https://niplo-agency-f.vercel.app/works"
+        />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Trabalhos | Agência N® - Trabalhos Criativos e Interativos"
+        />
+        <meta
+          name="twitter:description"
+          content="Veja como combinamos design, animações e tecnologia para criar experiências memoráveis."
+        />
+        <meta name="twitter:image" content="/images/portfolio-preview.jpg" />
+        <meta name="robots" content="index, follow" />
+      </Head>
+
       <section className="mx-auto my-0 w-full px-[2.5rem] bg-background max-laptop:p-[1rem]">
         <AnimatePresence mode="wait">
           {scrolled && (
@@ -47,4 +88,5 @@ const WorksPage = () => {
     </Layout>
   );
 };
+
 export default WorksPage;

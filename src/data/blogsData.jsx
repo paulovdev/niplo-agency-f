@@ -12,7 +12,7 @@ const blogsData = [
     `,
     category: "TECNOLOGIA",
     min: "5 MINS",
-    img: "/blog/blog-4.avif",
+    img: "/blog/blog-1.avif",
   },
   {
     title: "Lumia Studio e a Reinvenção do Design Minimalista",
@@ -27,7 +27,7 @@ const blogsData = [
     `,
     category: "DESIGN",
     min: "4 MINS",
-    img: "/blog/blog-6.avif",
+    img: "/blog/blog-2.avif",
   },
   {
     title: "Vortex Energy: O Futuro Sustentável da Energia",
@@ -42,7 +42,7 @@ const blogsData = [
     `,
     category: "ESPORTE",
     min: "6 MINS",
-    img: "/blog/blog-5.avif",
+    img: "/blog/blog-3.avif",
   },
   {
     title: "A Revolução da Interface Humano-Digital",
@@ -58,6 +58,36 @@ const blogsData = [
     category: "TECNOLOGIA",
     min: "7 MINS",
     img: "/blog/blog-4.avif",
+  },
+  {
+    title: "Lumia Studio e a Reinvenção do Design Minimalista",
+    id: "lumia-studio-reinvencao-design-minimalista",
+    titleDescription:
+      "O estúdio Lumia está reformulando o conceito de design minimalista, equilibrando estética e funcionalidade.",
+    description: `
+      <h1>Minimalismo com Propósito</h1>
+      <p>O Lumia Studio tem sido referência em design ao explorar o minimalismo de forma inovadora, garantindo que cada detalhe tenha um propósito.</p>
+      <p>Com projetos que misturam formas puras, cores sutis e uma abordagem sustentável, o estúdio se tornou um ícone no setor criativo.</p>
+      <p>Seu impacto vai além da estética: o Lumia Studio influencia marcas a adotarem soluções mais inteligentes e ambientalmente responsáveis.</p>
+    `,
+    category: "DESIGN",
+    min: "4 MINS",
+    img: "/blog/blog-5.avif",
+  },
+  {
+    title: "Vortex Energy: O Futuro Sustentável da Energia",
+    id: "vortex-energy-futuro-sustentavel",
+    titleDescription:
+      "A Vortex Energy está revolucionando o setor com soluções energéticas inteligentes e sustentáveis.",
+    description: `
+      <h1>Energia Sustentável para um Novo Mundo</h1>
+      <p>A Vortex Energy tem liderado a transição para fontes renováveis, combinando tecnologia avançada e eficiência energética.</p>
+      <p>Com soluções inovadoras para empresas e consumidores, a empresa está moldando um futuro mais sustentável e acessível para todos.</p>
+      <p>O compromisso da Vortex Energy reforça a importância de inovação e responsabilidade ambiental no setor energético.</p>
+    `,
+    category: "ESPORTE",
+    min: "6 MINS",
+    img: "/blog/blog-6.avif",
   },
 ];
 

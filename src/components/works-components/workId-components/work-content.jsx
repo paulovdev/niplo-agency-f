@@ -1,4 +1,3 @@
-import TextSlide from "@/components/reusable/text-slide";
 
 const WorkContent = ({ name, works }) => {
   return (
@@ -7,11 +6,13 @@ const WorkContent = ({ name, works }) => {
         <span className="mb-[1rem] text-color2 text-[.8rem] font-[500] tracking-[-.2px] max-tablet:text-[.8rem]">
           NIPLO APRESENTS
         </span>
-        <TextSlide
-          color="text-color !leading-[1.4] uppercase"
-          phrases={[name]}
-          rightContentBol={false}
-        />
+
+        <h2
+          className="w-full text-center text-[3rem] text-color font-[500] tracking-[-2px] leading-none uppercase 
+      max-laptop:font-[600]"
+        >
+          {[name]}
+        </h2>
       </div>
 
       <div className="flex items-start flex-col gap-[1rem] max-tablet:gap-[2rem] max-tablet:mt-[2.5rem]">

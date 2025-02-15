@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Blogs from "@/components/blog-components/blogs";
 import Hero from "@/components/blog-components/hero";
 import Layout from "@/utils/stairs";
@@ -26,6 +27,43 @@ export default function Blog() {
 
   return (
     <Layout>
+      <Head>
+        <title>Agência N® | Blog News</title>
+        <meta
+          name="description"
+          content="Explore artigos exclusivos sobre design, inovação, desenvolvimento web e tendências digitais no blog da Agência N®."
+        />
+        <meta
+          name="keywords"
+          content="blog de design, UX/UI, desenvolvimento web, tendências digitais, inovação, branding"
+        />
+        <meta name="author" content="Agência N®" />
+
+        <meta
+          property="og:title"
+          content="Blog da Agência N® - Design e Tecnologia"
+        />
+        <meta
+          property="og:description"
+          content="Fique por dentro das últimas tendências do design, UX/UI e tecnologia digital. Artigos exclusivos da Agência N®."
+        />
+        <meta property="og:image" content="/images/blog-cover.jpg" />
+        <meta property="og:url" content="https://niplo-agency-f.vercel.app/blog" />
+        <meta property="og:type" content="article" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Blog da Agência N® - Insights sobre Design e Tecnologia"
+        />
+        <meta
+          name="twitter:description"
+          content="Artigos sobre design, inovação e desenvolvimento web. Fique atualizado com a Agência N®."
+        />
+        <meta name="twitter:image" content="/images/blog-cover.jpg" />
+        <meta name="robots" content="index, follow" />
+      </Head>
+
       <section className="w-full mx-auto my-0 p-[2.5rem] max-laptop:p-[1rem]">
         <AnimatePresence mode="wait">
           {scrolled && (
