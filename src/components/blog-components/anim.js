@@ -1,4 +1,4 @@
-export const workAnimation = {
+export const blogAnimation = {
   initial: { opacity: 0, scale: 0.95, y: 100 },
   animate: {
     opacity: 1,

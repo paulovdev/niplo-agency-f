@@ -1,14 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useWindowScroll } from "react-use";
-import { AnimatePresence, motion } from "framer-motion";
-import { dropYAnim, menu, navigationsTextAnim } from "./anim";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { menu, navigationsTextAnim } from "./anim";
 import { useAp } from "@/context/ap-context";
+import { SiVerizon } from "react-icons/si";
 
-const PerspectiveMenuText = ({ label }) => (
+const PerspectiveMenuText = ({ label, apActive }) => (
   <div className="size-full bg-none">
-    <div className="text-color3 font-general text-[1rem] font-[400] tracking-[-.5px] uppercase cursor-pointer">
-      {label}
+    <div className="text-color3 font-general text-[1rem] font-[400] tracking-[-.5px] uppercase flex justify-between cursor-pointer">
+      {label} {apActive ? <SiVerizon /> : null}
     </div>
   </div>
 );
@@ -35,12 +34,11 @@ const HamburguerMenu = ({ isOpen, onClick }) => (
   </div>
 );
 
-const MenuContent = ({ isOpen }) => {
-   const {selectedAp, setSelectedAp} = useAp();
+const MenuContent = ({ isOpen, closeMenuAfterSelectAp }) => {
+  const { selectedAp, setSelectedAp } = useAp();
   const navigationsMenuText = [
-    { name: "GRADE" , change:"grid"},
-    { name: "Lista",change:"list" },
-    { name: "Mansory" },
+    { name: "GRADE", change: "grid" },
+    { name: "LISTA", change: "list" },
   ];
 
   return (
@@ -63,7 +61,7 @@ const MenuContent = ({ isOpen }) => {
           },
         }}
       >
-        <p className="w-full col-span-3 text-center text-color3 font-general font-[500] text-[.85rem] uppercase border-b border-border2">
+        <p className="w-full col-span-3 text-center text-color3 font-general font-[500] text-[.85rem] leading-[2] uppercase border-b border-border2">
           MODO DE APRESENTACAO
         </p>
 
@@ -77,10 +75,20 @@ const MenuContent = ({ isOpen }) => {
               variants={navigationsTextAnim}
               initial="initial"
               whileHover="hover"
-             onClick={() =>setSelectedAp(item.change)}
+              onClick={() => {
+                setSelectedAp(item.change);
+                scrollTo({ top: 0 });
+                closeMenuAfterSelectAp();
+              }}
             >
-              <PerspectiveMenuText label={item.name} />
-              <PerspectiveMenuText label={item.name} />
+              <PerspectiveMenuText
+                label={item.name}
+                apActive={selectedAp === item.change}
+              />
+              <PerspectiveMenuText
+                label={item.name}
+                apActive={selectedAp === item.change}
+              />
             </motion.div>
             <div className="w-full h-[1px] bg-border2 my-[1rem]" />
           </div>
@@ -91,33 +99,20 @@ const MenuContent = ({ isOpen }) => {
 };
 
 const Menu = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
-  const { y } = useWindowScroll();
-
-  useEffect(() => {
-    setScrolled(y > 550);
-  }, [y]);
 
   return (
-    <AnimatePresence>
-      {scrolled && (
-        <motion.div
-          variants={dropYAnim}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="fixed w-full h-[50px] left-0 bottom-[10px] flex justify-center items-center z-50"
-        >
-          <HamburguerMenu
-            isOpen={menuToggle}
-            onClick={() => setMenuToggle(!menuToggle)}
-          />
+    <>
+      <HamburguerMenu
+        isOpen={menuToggle}
+        onClick={() => setMenuToggle(!menuToggle)}
+      />
 
-          <MenuContent isOpen={menuToggle} />
-        </motion.div>
-      )}
-    </AnimatePresence>
+      <MenuContent
+        isOpen={menuToggle}
+        closeMenuAfterSelectAp={() => setMenuToggle(!menuToggle)}
+      />
+    </>
   );
 };
 

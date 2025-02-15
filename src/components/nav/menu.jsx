@@ -10,6 +10,14 @@ import {
   navigationsMenuTextAnim,
   navigationsTextAnim,
 } from "./anim";
+import {
+  SiDribbble,
+  SiFacebook,
+  SiInstagram,
+  SiLinkedin,
+  SiTwitch,
+  SiYoutube,
+} from "react-icons/si";
 
 const Menu = ({ menuToggle, setMenuToggle }) => {
   const router = useRouter();
@@ -21,17 +29,24 @@ const Menu = ({ menuToggle, setMenuToggle }) => {
   const navigationsMenuText = [
     { title: "INÍCIO", href: "/" },
     { title: "SOBRE NÓS", href: "/about" },
-    { title: "CONTATO", href: "/contact" },
     { title: "TRABALHOS", href: "/works" },
     { title: "BLOG", href: "/blog" },
   ];
 
   const navigationsText = [
-    { title: "INSTAGRAM" },
-    { title: "FACEBOOK" },
-    { title: "TWITTER" },
-    { title: "YOUTUBE" },
-    { title: "LINKEDIN" },
+    { title: "feito por:", subTitle: "paulo" },
+    { title: "Typografia:", subTitle: " Google Fonts" },
+    { title: "Imagens: ", subTitle: "unsplash" },
+    { subTitle: "Termos & Condições" },
+  ];
+
+  const navigationsIcons = [
+    { icon: <SiInstagram /> },
+    { icon: <SiFacebook /> },
+    { icon: <SiTwitch /> },
+    { icon: <SiDribbble /> },
+    { icon: <SiYoutube /> },
+    { icon: <SiLinkedin /> },
   ];
 
   return (
@@ -68,50 +83,67 @@ const Menu = ({ menuToggle, setMenuToggle }) => {
           className="relative w-full h-screen pl-[2.5rem] flex items-center justify-between 
                     max-tablet:flex-col max-tablet:px-[1rem] max-tablet:py-[8rem]"
         >
-          <div className="w-full h-full flex-[2] flex flex-col items-start justify-center">
-            <span className="mb-[2rem] text-[.7rem] text-color2 font-[500] font-general">
-              NAVEGAR PELO SITE
-            </span>
-            {/* NAVIGATION CONTENT */}
-            <div className="w-full flex flex-col items-start gap-[.25rem]">
-              {navigationsMenuText.map((i) => {
-                const isActive =
-                  router.pathname.split("/")[1] === i.href.split("/")[1];
+          <div className="w-full h-full flex-[2.25] flex flex-col items-start justify-around">
+            <div className="relative h-fit">
+              <span className="relative text-[.7rem] text-color2 font-[500] font-general">
+                NAVEGAR PELO SITE
+              </span>
+              {/* NAVIGATION CONTENT */}
+              <div className="w-full h-full mt-[50px] flex flex-col items-center justify-center gap-[.25rem]">
+                {navigationsMenuText.map((i) => {
+                  const isActive =
+                    router.pathname.split("/")[1] === i.href.split("/")[1];
 
-                return (
-                  <div
-                    key={i.title}
-                    className="w-full h-[80px] overflow-hidden cursor-pointer"
-                  >
-                    <Link href={i.href}>
-                      <motion.div
-                        className="relative size-full"
-                        variants={navigationsMenuTextAnim}
-                        initial="initial"
-                        whileHover="hover"
-                      >
-                        <PerspectiveMenuText
-                          label={i.title}
-                          isActive={isActive}
-                        />
-                        <PerspectiveMenuText
-                          label={i.title}
-                          isActive={isActive}
-                        />
-                      </motion.div>
-                      <div className="w-full h-[1px] bg-border2 my-[1rem]" />
-                    </Link>
-                  </div>
-                );
-              })}
+                  return (
+                    <div
+                      key={i.title}
+                      className="w-full h-[80px] overflow-hidden cursor-pointer"
+                    >
+                      <Link href={i.href}>
+                        <motion.div
+                          className="relative size-full"
+                          variants={navigationsMenuTextAnim}
+                          initial="initial"
+                          whileHover="hover"
+                        >
+                          <PerspectiveMenuText
+                            label={i.title}
+                            isActive={isActive}
+                          />
+                          <PerspectiveMenuText
+                            label={i.title}
+                            isActive={isActive}
+                            containerClass="italic font-inter"
+                          />
+                        </motion.div>
+                        <div className="w-full h-[1px] bg-border2 my-[1rem]" />
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="w-full pt-[50px] pr-[2.5rem] flex items-end justify-between gap-[1rem]">
-              {navigationsText.map((i, index) => (
-                <span className="text-color3 font-general font-[500] text-[.8rem] uppercase">
-                  {i.title}
-                </span>
-              ))}
+            <div className="relative h-fit">
+              <div className="w-full pt-[50px] flex items-end justify-between gap-[1rem]">
+                {navigationsIcons.map((i, index) => (
+                  <span className="text-color3 font-general font-[500] text-[1.5rem] uppercase">
+                    {i.icon}
+                  </span>
+                ))}
+              </div>
+              <div className="w-full pt-[50px] flex items-end justify-between gap-[1rem]">
+                {navigationsText.map((i, index) => (
+                  <div className="w-fit flex items-start gap-1">
+                    <span className="text-color2 font-general font-[500] text-[.8rem] uppercase">
+                      {i.title}
+                    </span>
+                    <span className="text-color3 font-general font-[700] text-[.8rem] uppercase">
+                      {i.subTitle}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

@@ -76,8 +76,8 @@ const worksData = [
     client: "Tech Innovations",
     description:
       "Uma interface intuitiva e design de experiência para um aplicativo móvel fluido.",
-    src: "/works/work-6.jpg",
-    srcView: "/works/work-6.jpg",
+    src: "/works/work-6.heic",
+    srcView: "/works/work-6.heic",
     alt: "imagem do projeto 6",
     color: "linear-gradient(135deg, #6A5C67, #5B4C53)",
     images: ["/works/works-single/bg.avif", "/works/works-single/bg.jpg"],

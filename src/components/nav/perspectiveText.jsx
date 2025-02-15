@@ -27,12 +27,12 @@ export const PerspectiveMenu = ({ label, color, id }) => {
   );
 };
 
-export const PerspectiveMenuText = ({ label, isActive }) => {
+export const PerspectiveMenuText = ({ label, isActive, containerClass }) => {
   return (
     <div className="active-menu-link size-full bg-none  ">
       <div
         className={`text-color text-[4rem] font-[500] uppercase max-tablet:text-[3.5rem] max-tablet:tracking-[-.8px]
-          ${isActive ? "text-active" : "text-color3"} `}
+        ${isActive ? "text-active" : "text-color3"} ${containerClass} `}
       >
         {label}
         {isActive && (

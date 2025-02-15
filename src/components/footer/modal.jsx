@@ -83,7 +83,7 @@ const Modal = ({ modalToggle, setModalToggle }) => {
             variants={contentAnim}
             initial="initial"
             animate={modalToggle ? "animate" : "initial"}
-            className="relative size-full p-[2.5rem] flex flex-col gap-[1.5rem] items-start justify-center z-0"
+            className="relative size-full p-[2.5rem] flex flex-col gap-[1.5rem] items-start justify-center z-0 max-tablet:p-[1rem]  max-laptop:p-[1.5rem]"
           >
             {[
               { label: "SEU E-MAIL", id: "email", type: "email" },

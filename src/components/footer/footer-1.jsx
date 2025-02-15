@@ -37,10 +37,10 @@ const Footer1 = () => {
       ].map((section, index) => (
         <div
           key={index}
-          className="font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase"
+          className="w-full font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase"
         >
           <p className="mb-[1rem] text-color2">{section.title}</p>
-          <div className="flex flex-col">
+          <div className="w-full flex flex-col">
             {section.links.map((link, i) => (
               <Link
                 key={i}

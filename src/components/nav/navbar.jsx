@@ -13,10 +13,13 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const { y } = useWindowScroll();
   const [menuToggle, setMenuToggle] = useState(false);
-  const isWorksRoute = /^\/works\/.+$/.test(router.pathname);
 
   const textColor =
-    isWorksRoute || router.pathname === "/" ? "#e0dfdd" : "#fff";
+    router.pathname === "/works"
+      ? "#000"
+      : router.pathname.startsWith("/works/") || router.pathname === "/"
+      ? "#fff"
+      : "#000";
 
   const navigationsTextAnim = {
     hover: {
@@ -51,11 +54,10 @@ export default function Nav() {
   };
 
   const navigationsText2 = [
-    { id: 1, title: "INÍCIO", title2: "INÍCIO", href: "/" },
-    { id: 2, title: "SOBRE NÓS", title2: "SOBRE NÓS", href: "/about" },
-    { id: 3, title: "CONTATO", title2: "CONTATO", href: "/contact" },
-    { id: 4, title: "TRABALHOS", title2: "TRABALHOS", href: "/works" },
-    { id: 5, title: "BLOG", title2: "BLOG", href: "/blog" },
+    { id: 1, title: "INÍCIO", href: "/" },
+    { id: 2, title: "SOBRE NÓS", href: "/about" },
+    { id: 3, title: "TRABALHOS", href: "/works " },
+    { id: 4, title: "BLOG", href: "/blog" },
   ];
 
   useEffect(() => {
@@ -120,7 +122,7 @@ export default function Nav() {
                         id={i.id}
                       />
                       <PerspectiveMenu
-                        label={i.title2}
+                        label={i.title}
                         color={textColor}
                         id={i.id}
                       />

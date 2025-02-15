@@ -9,10 +9,12 @@ import { useMedia } from "react-use";
 import { useEffect, useState } from "react";
 import { usePlayVideo } from "@/context/several-context";
 import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 export const Cursor = () => {
   const { cursorVariant } = useCursor();
   const { isPlaying } = usePlayVideo();
+  const router = useRouter();
   const isTablet = useMedia("(max-width: 768px)");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
@@ -140,7 +142,11 @@ export const Cursor = () => {
                 }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
               >
-                <p className="text-color text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase flex-nowrap">
+                <p
+                  className={` ${
+                    router.pathname === "/blog" ? "text-color3" : "text-color"
+                  } text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase flex-nowrap`}
+                >
                   ler artigo
                 </p>
               </motion.div>

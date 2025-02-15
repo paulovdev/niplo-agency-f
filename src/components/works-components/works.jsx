@@ -5,10 +5,9 @@ import worksData from "@/data/worksData";
 import Link from "next/link";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { textAnim, workAnimation } from "./anim";
-import { useState } from "react";
-import Menu from "./menu";
+import { imageVisible, textAnim, workAnimation } from "./anim";
 import { useAp } from "@/context/ap-context";
+import { RiArrowRightDownLine } from "react-icons/ri";
 
 const WorkGrade = ({ name, category, src, year }) => {
   const { setCursorVariant } = useCursor();
@@ -32,11 +31,12 @@ const WorkGrade = ({ name, category, src, year }) => {
 
   return (
     <motion.div
-      className="w-full max-tablet:h-[45vh]"
+      className="w-full"
       ref={ref}
       variants={workAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
+      onClick={handleClick}
     >
       <motion.div
         className="relative size-full select-auto pointer-events-auto "
@@ -51,7 +51,6 @@ const WorkGrade = ({ name, category, src, year }) => {
           height={1200}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
         />
 
         <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
@@ -88,39 +87,60 @@ const WorkList = ({ name, category, src, year }) => {
 
   return (
     <motion.div
-      className=" relative w-full h-fit py-[1rem] hover:opacity-60 transition-all"
+      className="relative w-full h-fit z-10 group"
       ref={ref}
       variants={workAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
     >
-      <div className="relative w-full flex items-center justify-between">
-        <div className="w-[25%] flex justify-start">
-          <span className="text-color text-[1.5rem] font-[600] max-tablet:text-[.9rem]">
-            /{year}
+      <motion.div
+        className="relative w-full py-[2rem] flex items-center justify-between max-tablet:gap-4 transition-all"
+        initial="initial"
+        whileHover="hover"
+      >
+        <div className="w-[25%] flex justify-start group-hover:opacity-50 max-tablet:w-full">
+          <span className="text-[.9rem] font-[500] tracking-[-.7px] uppercase">
+            {year}
           </span>
         </div>
 
-        <div className="w-[25%] flex justify-start">
-          <h1 className="text-color text-[2.5rem] font-[500] tracking-[-1px] max-tablet:text-[1.5rem] max-tablet:font-[600]">
+        <div className="w-full flex justify-start group-hover:opacity-50">
+          <h1 className="font-general text-color text-[1rem] font-[500] tracking-[-.7px] uppercase">
             {name}
           </h1>
         </div>
 
-        <div className="w-[50%] flex justify-end">
-          <p className="text-color text-[1rem] font-[500] max-tablet:text-[.9rem]">
+        <div className="w-[75%] flex justify-start group-hover:opacity-50 max-tablet:w-1/2">
+          <span className="text-[1.5rem] group-hover:rotate-[-45deg] transition-transform">
+            <RiArrowRightDownLine />
+          </span>
+        </div>
+
+        <motion.div
+          className="relative w-full flex justify-start max-tablet:hidden"
+          variants={imageVisible}
+        >
+          <Image
+            src={src}
+            alt="asd"
+            width={1200}
+            height={1200}
+            className="absolute top-[-200px] w-[400px] h-[400px] rounded-[.25rem] object-cover "
+          />
+        </motion.div>
+
+        <div className="w-1/2 flex justify-end group-hover:opacity-50 max-tablet:w-full">
+          <p className="text-color text-[.85rem] text-end font-robert-medium font-[400] tracking-[-.4px]">
             {category}
           </p>
         </div>
-      </div>
-
-      <div className="pt-[2rem] border-b border-border" />
+      </motion.div>
     </motion.div>
   );
 };
 
 const Works = () => {
-  const { selectedAp, setSelectedAp } = useAp();
+  const { selectedAp } = useAp();
 
   return (
     <>
@@ -149,8 +169,7 @@ const Works = () => {
             </Link>
           ))}
       </div>
-
-      <div className="w-full h-full flex flex-col items-start gap-[1rem] ">
+      <div className="w-full h-full flex flex-col items-start pt-[50px]">
         {selectedAp === "list" &&
           worksData.map((i) => (
             <Link
@@ -173,8 +192,6 @@ const Works = () => {
             </Link>
           ))}
       </div>
-
-      <Menu />
     </>
   );
 };

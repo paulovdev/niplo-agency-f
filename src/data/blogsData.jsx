@@ -40,7 +40,7 @@ const blogsData = [
       <p>Com soluções inovadoras para empresas e consumidores, a empresa está moldando um futuro mais sustentável e acessível para todos.</p>
       <p>O compromisso da Vortex Energy reforça a importância de inovação e responsabilidade ambiental no setor energético.</p>
     `,
-    category: "SUSTENTABILIDADE",
+    category: "ESPORTE",
     min: "6 MINS",
     img: "/blog/blog-5.avif",
   },

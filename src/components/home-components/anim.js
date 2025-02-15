@@ -1,15 +1,15 @@
 export const imageAnim = {
   initial: {
-    scale: 0.75,
-    rotate: 2.5,
+    scale: 0.25,
+    rotate: -15,
   },
   animate: {
     scale: 1,
     rotate: 0,
     transition: {
       duration: 0.75,
-      ease: [0.33, 1, 0.68, 1],
-      delay: 3.25,
+      ease: [0.53, 1, 0.88, 1],
+      delay: 3.1,
     },
   },
 };
@@ -21,9 +21,20 @@ export const h1SlideTextAnim = {
     transition: {
       duration: 0.75,
       ease: [0.33, 1, 0.68, 1],
-      delay: 3.55,
     },
   },
+};
+
+export const h1SlideTextAnim1 = {
+  initial: { y: "175%" },
+  animate: (i) => ({
+    y: "0",
+    transition: {
+      duration: 0.49,
+      ease: [0.33, 1, 0.68, 1],
+      delay: i * 0.075,
+    },
+  }),
 };
 
 export const pSlideTextAnim = {
@@ -33,7 +44,6 @@ export const pSlideTextAnim = {
     transition: {
       duration: 0.75,
       ease: [0.33, 1, 0.68, 1],
-      delay: 4.15,
     },
   },
 };
