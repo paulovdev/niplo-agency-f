@@ -4,10 +4,11 @@ import {
   useMotionValue,
   useSpring,
   useScroll,
+  useMotionValueEvent,
 } from "framer-motion";
 import { useCursor } from "@/context/cursor-context";
 import { useMedia } from "react-use";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePlayVideo } from "@/context/several-context";
 import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
 import { useRouter } from "next/router";
@@ -18,12 +19,18 @@ export const Cursor = () => {
   const router = useRouter();
   const isTablet = useMedia("(max-width: 768px)");
   const { scrollY } = useScroll();
+  const [scrollDirection, setScrollDirection] = useState("down");
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   const smoothX = useSpring(mouseX, { stiffness: 100, damping: 15 });
   const smoothY = useSpring(mouseY, { stiffness: 100, damping: 15 });
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const diff = current - scrollY.getPrevious();
+    setScrollDirection(diff > 0 ? "down" : "up");
+  });
 
   useEffect(() => {
     const manageMouseMove = (e) => {
@@ -77,7 +84,7 @@ export const Cursor = () => {
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
               >
                 <p className="text-color text-[2rem]">
-                  {scrollY.get() > scrollY.getPrevious() ? (
+                  {scrollDirection === "down" ? (
                     <RiArrowDownLine />
                   ) : (
                     <RiArrowUpLine />

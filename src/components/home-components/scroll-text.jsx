@@ -8,6 +8,18 @@ import { useInView } from "react-intersection-observer";
 
 gsap.registerPlugin(ScrollTrigger);
 
+export const firstPhraseAnimation = {
+  initial: { y: "175%" },
+  animate: (i) => ({
+    y: "0",
+    transition: {
+      duration: 0.49,
+      ease: [0.33, 1, 0.68, 1],
+      delay: i * 0.02,
+    },
+  }),
+};
+
 const ScrollLinked = () => {
   const { scrollYProgress } = useScroll();
 
@@ -94,20 +106,23 @@ const ScrollText = () => {
           className="w-full h-[100dvh] flex flex-col items-center justify-center"
           id="clip"
         >
-          {servicesData.map((section) => (
-            <div
-              key={section.id}
-              className="absolute w-full flex flex-col items-center justify-center text-center"
-            >
-              <div className={`${section.id}-h1-text opacity-0`}>
-                <h1 className="text-[8vw] text-color font-[500] tracking-[-3px] uppercase max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]">
+          {servicesData.map((section, index) => (
+            <div key={section.id} className="absolute">
+              <motion.div
+                className={`${section.id}-h1-text w-screen h-screen p-[2.5rem] flex flex-col items-center justify-between text-center opacity-0`}
+                initial="initial"
+                animate="animate"
+                variants={firstPhraseAnimation}
+                custom={index}
+              >
+                <h1 className="text-[7.5vw] uppercase text-center max-w-[50vw] leading-none">
                   <span className="mr-2 text-sm font-robert-medium tracking-[1px]">
                     {section.number}
                   </span>
                   {section.title}
                 </h1>
                 <ul
-                  className={`${section.id}-list-text font-general text-color text-[1rem] font-[500] tracking-[-.7px] uppercase`}
+                  className={`${section.id}-list-text flex items-center justify-between gap-4 text-color font-general text-[.9rem] tracking-[-.5px] font-[500] uppercase max-tablet:text-[.85rem]`}
                 >
                   {section.list.map((word, index) => (
                     <li key={index} className="opacity-0">
@@ -115,7 +130,7 @@ const ScrollText = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>
