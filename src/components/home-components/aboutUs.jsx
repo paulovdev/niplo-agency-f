@@ -27,7 +27,7 @@ const AboutUs = () => {
 
       <div className="w-full flex-[3] flex flex-col items-start justify-start">
         {paragraph.map((text, i) => (
-          <div className="w-full overflow-hidden">
+          <div className="w-full overflow-hidden" key={i}>
             <motion.p
               key={i}
               custom={i}

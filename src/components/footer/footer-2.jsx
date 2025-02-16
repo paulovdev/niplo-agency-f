@@ -14,7 +14,7 @@ const Footer2 = () => {
           vamos trabalhar juntos?
         </h1>
         <button
-          className="w-[175px] h-[40px] bg-background3 rounded-full"
+          className="w-[225px] h-[45px] bg-background3 rounded-full"
           onClick={handleModal}
         >
           <span className="font-general text-color3 text-[.75rem] tracking-[-.3px] font-[600] uppercase">

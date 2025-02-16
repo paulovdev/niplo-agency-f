@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import Home from "@/pages/home";
 
-const index = () => {
+const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []); 
+
   return (
     <>
       <Home />
@@ -8,4 +13,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
-import { useScroll, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import servicesData from "@/data/servicesData";
 import { useCursor } from "@/context/cursor-context";
-import { useInView } from "react-intersection-observer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,36 +19,7 @@ export const firstPhraseAnimation = {
   }),
 };
 
-const ScrollLinked = () => {
-  const { scrollYProgress } = useScroll();
-
-  return (
-    <>
-      <motion.div
-        id="scroll-indicator"
-        className="bg-white"
-        style={{
-          scaleX: scrollYProgress,
-          position: "fixed",
-          bottom: 25,
-          left: "2.5rem",
-          width: 250,
-          height: 3,
-          originX: 0,
-          zIndex: 40,
-          mixBlendMode: "exclusion",
-        }}
-      />
-    </>
-  );
-};
-
 const ScrollText = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: false,
-  });
-
   const { setCursorVariant } = useCursor();
   const handleMouseEnter = () => {
     setCursorVariant("scrollText");
@@ -76,6 +46,7 @@ const ScrollText = () => {
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 1 }
       )
+        .addPause("+=2")
         .fromTo(
           `.${section.id}-list-text li`,
           { opacity: 0, y: 20 },
@@ -95,12 +66,10 @@ const ScrollText = () => {
 
   return (
     <>
-      {inView && <ScrollLinked />}
       <section
-        className="w-screen min-h-screen select-none"
+        className="w-screen h-full select-none"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        ref={ref}
       >
         <div
           className="w-full h-[100dvh] flex flex-col items-center justify-center"
@@ -122,7 +91,8 @@ const ScrollText = () => {
                   {section.title}
                 </h1>
                 <ul
-                  className={`${section.id}-list-text flex items-center justify-between gap-4 text-color font-general text-[.9rem] tracking-[-.5px] font-[500] uppercase max-tablet:text-[.85rem]`}
+                  className={`${section.id}-list-text text-color font-general text-[.9rem] tracking-[-.5px] font-[500] uppercase 
+                    max-tablet:text-[.85rem] `}
                 >
                   {section.list.map((word, index) => (
                     <li key={index} className="opacity-0">

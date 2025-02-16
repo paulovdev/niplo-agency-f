@@ -1,6 +1,7 @@
 "use client";
 
 export default function Hero() {
+  console.log("Renderizando Works...");
   return (
     <div className="w-full h-[70dvh] my-0 mx-auto py-[2rem] flex flex-col items-start justify-end">
       <p className="max-w-[600px] w-full text-color text-[.9rem] tracking-[-.5px] font-[500] uppercase">

@@ -6,17 +6,20 @@ const LenisContext = createContext();
 
 export const LenisProvider = ({ children }) => {
   const lenisRef = useRef(null);
-
   const router = useRouter();
 
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      /* restoreScroll: true, */
     });
 
     lenisRef.current = lenis;
-    router.pathname === "/" && lenis.stop();
+
+    if (router.pathname === "/") {
+      lenis.stop();
+    }
 
     const animate = (time) => {
       lenis.raf(time);
@@ -30,13 +33,8 @@ export const LenisProvider = ({ children }) => {
     };
   }, [router]);
 
-  const stopLenis = () => {
-    return lenisRef.current.stop();
-  };
-
-  const startLenis = () => {
-    return lenisRef.current.start();
-  };
+  const stopLenis = () => lenisRef.current?.stop();
+  const startLenis = () => lenisRef.current?.start();
 
   return (
     <LenisContext.Provider value={{ stopLenis, startLenis }}>

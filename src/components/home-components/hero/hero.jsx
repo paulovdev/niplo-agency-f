@@ -2,20 +2,20 @@ import { useLenis } from "@/context/lenis-context";
 import {
   comercialRAnimation,
   firstPhraseAnimation,
-  imageAnim,
   pSlideTextAnim,
 } from "./anim";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { usePageViewed } from "@/context/page-viewed-context";
 
 const FirstPhraseText = ({ onComplete }) => {
   const firstPhrase = ["A", "G", "Ê", "N", "C", "I", "A", "—", "N"];
-  let completedAnimations = 0;
+  const completedAnimations = useRef(0);
 
   const handleAnimationComplete = () => {
-    completedAnimations++;
-    if (completedAnimations === firstPhrase.length) {
+    completedAnimations.current += 1;
+    if (completedAnimations.current === firstPhrase.length) {
       onComplete();
     }
   };
@@ -41,8 +41,10 @@ const FirstPhraseText = ({ onComplete }) => {
 };
 
 const Hero = () => {
-  const container = useRef(null);
+  console.log("Renderizando Hero...");
 
+  const container = useRef(null);
+  const { pageViewed } = usePageViewed();
   const { startLenis } = useLenis();
   const [animH1, setAnimH1] = useState(false);
   const [animR, setAnimR] = useState(false);
@@ -51,20 +53,30 @@ const Hero = () => {
     target: container,
     offset: ["start start", "end start"],
   });
+  const [delayson, setDelayson] = useState(pageViewed ? 0.1 : 3.1);
 
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "80vh"]);
 
-  if (animR) {
-    startLenis();
-  }
+  console.log(delayson);
+
+  useEffect(() => {
+    setDelayson(pageViewed ? 0.1 : 3.1);
+  }, [pageViewed]);
+
+  useEffect(() => {
+    if (pageViewed) {
+      setAnimR(true);
+    }
+  }, [pageViewed]);
 
   useEffect(() => {
     if (animR) {
+      startLenis();
       document.body.style.overflowY = "scroll";
     } else {
       document.body.style.overflowY = "hidden";
     }
-  }, [animR]);
+  }, [animR, startLenis]);
 
   return (
     <div className="w-screen h-[100dvh] overflow-hidden relative">
@@ -76,18 +88,33 @@ const Hero = () => {
         <div className="absolute top-0 left-0 w-screen h-screen bg-white z-[-1]" />
         <div className="absolute top-0 left-0 w-screen h-screen z-[-1]">
           <motion.div
-            variants={imageAnim}
-            initial="initial"
-            animate="animate"
+            key={delayson}
+            initial={{
+              scale: 0.15,
+              rotate: -15,
+              transition: {
+                duration: 0.5,
+                ease: [0.53, 1, 0.88, 1],
+              },
+            }}
+            animate={{
+              scale: 1,
+              rotate: 0,
+              transition: {
+                duration: 0.75,
+                ease: [0.53, 1, 0.88, 1],
+                delay: delayson,
+              },
+            }}
             className="size-full"
             onAnimationComplete={() => setAnimH1(true)}
           >
             <Image
-              src="/bg2.jpg"
+              src="/bg.avif"
               width={2000}
               height={2000}
               alt="Background"
-              className="size-full object-cover object-[50%_70%] brightness-[80%]"
+              className="size-full object-cover object-[20%_30%] brightness-[80%]"
             />
           </motion.div>
         </div>
@@ -100,8 +127,7 @@ const Hero = () => {
               initial="initial"
               animate={animR ? "animate" : "initial"}
               onAnimationComplete={() => setAnimP(true)}
-              className={`h-full text-[8vw] text-color3 font-[600] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600] 
-                `}
+              className="h-full text-[8vw] text-color3 font-[600] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600]"
             >
               &#174;
             </motion.h1>

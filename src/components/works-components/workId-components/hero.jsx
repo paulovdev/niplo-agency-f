@@ -21,7 +21,7 @@ const Hero = ({ srcView, name }) => {
             alt={name}
             width={1920}
             height={1080}
-            className="size-full object-center object-cover"
+            className="size-full object-center object-cover brightness-[85%]"
           />
           <div className="absolute bottom-6 left-1/2">
             <Image

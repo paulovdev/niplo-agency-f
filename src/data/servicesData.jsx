@@ -1,7 +1,7 @@
 const servicesData = [
   {
     id: "strategy",
-    title: "Raposa marrom salta sobre o cachorro preguiçoso",
+    title: "strategy",
     number: "(1)",
     list: [
       "Auditoria de Marca",
@@ -13,7 +13,7 @@ const servicesData = [
   },
   {
     id: "design",
-    title: "Raposa marrom salta sobre o cachorro preguiçoso",
+    title: "strategy",
     number: "(2)",
     list: [
       "Identidade de Marca",
@@ -28,7 +28,7 @@ const servicesData = [
   },
   {
     id: "innovation",
-    title: "Raposa marrom salta sobre o cachorro preguiçoso",
+    title: "strategy",
     number: "(3)",
     list: [
       "Pesquisa e Desenvolvimento de Produto",
@@ -40,7 +40,7 @@ const servicesData = [
   },
   {
     id: "growth",
-    title: "Raposa marrom salta sobre o cachorro preguiçoso",
+    title: "strategy",
     number: "(4)",
     list: [
       "Otimização da Taxa de Conversão (CRO)",

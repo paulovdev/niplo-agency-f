@@ -158,7 +158,7 @@ const Menu = ({ menuToggle, setMenuToggle }) => {
               height={400}
               autoPlay
               loop
-              src={"/vid-4.mp4"}
+              src={"/videos/menu.mp4"}
               alt=""
             />
           </motion.div>

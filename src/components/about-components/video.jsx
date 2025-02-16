@@ -28,7 +28,7 @@ const Video = () => {
         >
           <video
             className="relative w-full h-full object-cover brightness-[85%] select-none"
-            src="/several/s-video-1.mp4"
+            src="/videos/several.mp4"
             width={1920}
             height={1080}
             alt=""

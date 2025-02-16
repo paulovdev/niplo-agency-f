@@ -7,23 +7,26 @@ import { PlayingVideoProvider } from "@/context/several-context";
 import Footer from "@/components/footer/footer";
 import { ApProvider } from "@/context/ap-context";
 import { LenisProvider } from "@/context/lenis-context";
+import { PageViewedProvider } from "@/context/page-viewed-context";
 
 export default function App({ Component, pageProps, router }) {
   return (
     <div className="main noise">
       <LenisProvider>
-        <CursorProvider>
-          <ApProvider>
-            <PlayingVideoProvider>
-              <Cursor />
-              <Nav />
-              <AnimatePresence mode="wait">
-                <Component key={router.route} {...pageProps} />
-              </AnimatePresence>
-              <Footer />
-            </PlayingVideoProvider>
-          </ApProvider>
-        </CursorProvider>
+        <PageViewedProvider>
+          <CursorProvider>
+            <ApProvider>
+              <PlayingVideoProvider>
+                <Cursor />
+                <Nav />
+                <AnimatePresence mode="wait">
+                  <Component key={router.route} {...pageProps} />
+                </AnimatePresence>
+                <Footer />
+              </PlayingVideoProvider>
+            </ApProvider>
+          </CursorProvider>
+        </PageViewedProvider>
       </LenisProvider>
     </div>
   );

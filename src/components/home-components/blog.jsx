@@ -45,7 +45,7 @@ const Blogs = () => {
   });
 
   return (
-    <section className="relative w-full" ref={ref}>
+    <section className="relative w-full pb-[100px]" ref={ref}>
       <h2 className="mb-[2.5rem] font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase flex items-center gap-[.5rem]">
         BLOG NEWS /
         <Link

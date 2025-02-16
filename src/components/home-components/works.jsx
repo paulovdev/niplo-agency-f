@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { workAnimation, textAnim } from "./anim";
 
-const Work = ({ name, category, src, year }) => {
+const Work = ({ name, category, src, src2, year }) => {
   const { setCursorVariant } = useCursor();
 
   const { ref, inView } = useInView({
@@ -35,22 +35,37 @@ const Work = ({ name, category, src, year }) => {
       variants={workAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <motion.div
-        className="relative size-full select-auto pointer-events-auto "
+        className="relative size-full select-auto pointer-events-auto"
         initial="initial"
         whileHover="hover"
       >
         <Image
-          className="w-full h-[85vh] rounded-[.5rem] object-cover max-tablet:h-[350px] max-laptop:h-[600px] cursor-default"
+          className="w-full h-[85vh] rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%] max-tablet:h-[350px] max-laptop:h-[600px] cursor-default"
           src={src}
-          alt="asd"
+          alt={name}
           width={1200}
           height={1200}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
         />
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute top-0 left-0 size-full rounded-[.5rem]"
+        >
+          <Image
+            className="size-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
+            src={src2}
+            alt={`${name} - Hover`}
+            width={1200}
+            height={1200}
+          />
+        </motion.div>
 
         <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
           <motion.div className="relative size-full" variants={textAnim}>
@@ -92,9 +107,7 @@ const Works = () => {
         </Link>
       </h2>
 
-      <div className="grid-works w-full h-full grid grid-cols-2 gap-[1rem] max-laptop:grid-cols-1">
-        {/* GRID */}
-
+      <div className="grid-works size-full grid grid-cols-2 gap-[1rem] max-laptop:grid-cols-1">
         {worksData.slice(0, 4).map((i) => (
           <Link key={i.id} href={`/works/${i.id}`}>
             <Work
@@ -103,6 +116,7 @@ const Works = () => {
               name={i.name}
               category={i.category}
               src={i.src}
+              src2={i.src2}
               alt={i.alt}
               color={i.color}
               margin={i.margin}

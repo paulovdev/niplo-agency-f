@@ -48,7 +48,7 @@ export const Cursor = () => {
     <>
       {!isTablet && (
         <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[50]"
+          className="fixed top-0 left-0 pointer-events-none z-[100]"
           style={{ x: smoothX, y: smoothY }}
         >
           <AnimatePresence mode="wait">
@@ -60,7 +60,7 @@ export const Cursor = () => {
                 exit={{ opacity: 0, transition: { duration: 0.25 } }}
               >
                 <p className="text-color3 text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase">
-                  ver projeto
+                  conferir este trabalho
                 </p>
               </motion.div>
             )}
