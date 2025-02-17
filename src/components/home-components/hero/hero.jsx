@@ -44,7 +44,7 @@ const FirstPhraseText = ({ onComplete }) => {
 const Hero = () => {
   const container = useRef(null);
   const { startLenis } = useLenis();
- const {pageViewed} = usePageViewed()
+  const { pageViewed } = usePageViewed();
 
   const [animH1, setAnimH1] = useState(false);
   const [animR, setAnimR] = useState(false);
@@ -56,10 +56,6 @@ const Hero = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "80vh"]);
-
- 
-
-  
 
   useEffect(() => {
     if (pageViewed || animR) {
@@ -84,43 +80,23 @@ const Hero = () => {
       >
         <div className="absolute top-0 left-0 w-screen h-screen bg-white z-[-1]" />
         <div className="absolute top-0 left-0 w-screen h-screen z-[-1]">
-          {pageViewed ? (
-            <motion.div
-              variants={imageAnim}
-              initial="initial"
-              animate="animate"
-              className="size-full"
-              onAnimationComplete={() => setAnimH1(true)}
-              custom={0.25}
-            >
-              <Image
-                src="/bg.avif"
-                width={2000}
-                height={2000}
-                alt="Background"
-                priority
-                className="size-full object-cover object-[50%_70%] brightness-[80%]"
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              variants={imageAnim}
-              initial="initial"
-              animate="animate"
-              className="size-full"
-              onAnimationComplete={() => setAnimH1(true)}
-              custom={3}
-            >
-              <Image
-                src="/bg.avif"
-                width={2000}
-                height={2000}
-                alt="Background"
-                priority
-                className="size-full object-cover object-[50%_70%] brightness-[80%]"
-              />
-            </motion.div>
-          )}
+          <motion.div
+            variants={imageAnim}
+            initial="initial"
+            animate="animate"
+            className="size-full"
+            onAnimationComplete={() => setAnimH1(true)}
+            custom={pageViewed ? 0.25 : 3}
+          >
+            <Image
+              src="/bg.avif"
+              width={2000}
+              height={2000}
+              alt="Background"
+              priority={true}
+              className="size-full object-cover object-[50%_70%] brightness-[80%]"
+            />
+          </motion.div>
         </div>
 
         <div className="w-full h-full flex flex-col items-end justify-end">
