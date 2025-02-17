@@ -24,10 +24,6 @@ const Work = ({ name, category, src, src2, year }) => {
     setCursorVariant("default");
   };
 
-  const handleClick = () => {
-    handleMouseLeave();
-  };
-
   return (
     <motion.div
       className="w-full"
@@ -37,7 +33,7 @@ const Work = ({ name, category, src, src2, year }) => {
       animate={inView ? "animate" : "initial"}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
+      onClick={handleMouseLeave}
     >
       <motion.div
         className="relative size-full select-auto pointer-events-auto"
@@ -51,7 +47,7 @@ const Work = ({ name, category, src, src2, year }) => {
           width={1200}
           height={1200}
         />
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}

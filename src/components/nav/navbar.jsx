@@ -108,7 +108,7 @@ export default function Nav() {
               navigationsText2.map((i, index) => (
                 <li
                   className="w-fit h-[20px] overflow-hidden cursor-pointer pointer-events-auto max-laptop:hidden"
-                  key={i.title}
+                  key={index}
                 >
                   <motion.div
                     className="relative size-full max-laptop:hidden"

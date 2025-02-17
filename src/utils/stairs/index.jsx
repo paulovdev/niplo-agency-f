@@ -1,6 +1,6 @@
 import React from "react";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { opacity, expand } from "./anim";
 
@@ -18,16 +18,18 @@ export default function Layout({ children, backgroundColor }) {
   const nbOfColumns = 4;
 
   return (
-    <div className="page stairs" style={{ backgroundColor }}>
-      <motion.div {...anim(opacity)} className="transition-background" />
+    <AnimatePresence mode="wait">
+      <div className="page stairs" style={{ backgroundColor }}>
+        <motion.div {...anim(opacity)} className="transition-background" />
 
-      <div className="transition-container">
-        {[...Array(nbOfColumns)].map((_, i) => {
-          return <motion.div key={i} {...anim(expand, nbOfColumns - i)} />;
-        })}
+        <div className="transition-container">
+          {[...Array(nbOfColumns)].map((_, i) => {
+            return <motion.div key={i} {...anim(expand, nbOfColumns - i)} />;
+          })}
+        </div>
+
+        {children}
       </div>
-
-      {children}
-    </div>
+    </AnimatePresence>
   );
 }

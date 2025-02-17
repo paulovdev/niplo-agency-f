@@ -1,4 +1,19 @@
+export const imageAnim = {
+  initial: {
+    scale: 0.15,
+    rotate: -15,
+  },
+  animate: (custom) => ({
+    scale: 1,
+    rotate: 0,
 
+    transition: {
+      duration: 0.75,
+      ease: [0.53, 1, 0.88, 1],
+      delay: custom,
+    },
+  }),
+};
 
 export const firstPhraseAnimation = {
   initial: { y: "175%" },

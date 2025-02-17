@@ -15,7 +15,6 @@ export default function Blog() {
   const { selectedAp } = useAp();
   const { y } = useWindowScroll();
   const [scrolled, setScrolled] = useState(false);
-
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: false,
@@ -48,7 +47,10 @@ export default function Blog() {
           content="Fique por dentro das últimas tendências do design, UX/UI e tecnologia digital. Artigos exclusivos da Agência N®."
         />
         <meta property="og:image" content="/images/blog-cover.jpg" />
-        <meta property="og:url" content="https://niplo-agency-f.vercel.app/blog" />
+        <meta
+          property="og:url"
+          content="https://niplo-agency-f.vercel.app/blog"
+        />
         <meta property="og:type" content="article" />
 
         <meta name="twitter:card" content="summary_large_image" />

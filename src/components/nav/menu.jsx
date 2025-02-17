@@ -126,20 +126,23 @@ const Menu = ({ menuToggle, setMenuToggle }) => {
 
             <div className="relative h-fit">
               <div className="w-full pt-[50px] flex items-end justify-between gap-[1rem]">
-                {navigationsIcons.map((i, index) => (
-                  <span className="text-color3 font-general font-[500] text-[1.5rem] uppercase">
-                    {i.icon}
+                {navigationsIcons.map((ico, i) => (
+                  <span
+                    key={i}
+                    className="text-color3 font-general font-[500] text-[1.5rem] uppercase"
+                  >
+                    {ico.icon}
                   </span>
                 ))}
               </div>
               <div className="w-full pt-[50px] flex items-end justify-between gap-[1rem]">
-                {navigationsText.map((i, index) => (
-                  <div className="w-fit flex items-start gap-1">
+                {navigationsText.map((text, i) => (
+                  <div key={i} className="w-fit flex items-start gap-1">
                     <span className="text-color2 font-general font-[500] text-[.8rem] uppercase">
-                      {i.title}
+                      {text.title}
                     </span>
                     <span className="text-color3 font-general font-[700] text-[.8rem] uppercase">
-                      {i.subTitle}
+                      {text.subTitle}
                     </span>
                   </div>
                 ))}

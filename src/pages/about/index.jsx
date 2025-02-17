@@ -9,7 +9,6 @@ import Curve from "@/utils/stairs";
 const About = () => {
   return (
     <Curve>
-      {/* SEO Head */}
       <Head>
         <title>Agência N® | Sobre Nós</title>
         <meta

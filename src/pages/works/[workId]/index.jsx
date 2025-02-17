@@ -5,8 +5,12 @@ import WorkContent from "@/components/works-components/workId-components/work-co
 import worksData from "@/data/worksData";
 import Layout from "@/utils/stairs";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const WorkView = () => {
+    useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []); 
   const router = useRouter();
   const { workId } = router.query;
 

@@ -5,8 +5,12 @@ import DynamicImage from "@/components/reusable/dynamic-image";
 import blogsData from "@/data/blogsData";
 import Layout from "@/utils/stairs";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const BlogView = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const router = useRouter();
   const { blogId } = router.query;
 

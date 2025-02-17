@@ -12,8 +12,8 @@ import { PageViewedProvider } from "@/context/page-viewed-context";
 export default function App({ Component, pageProps, router }) {
   return (
     <div className="main noise">
-      <LenisProvider>
-        <PageViewedProvider>
+      <PageViewedProvider>
+        <LenisProvider>
           <CursorProvider>
             <ApProvider>
               <PlayingVideoProvider>
@@ -26,8 +26,8 @@ export default function App({ Component, pageProps, router }) {
               </PlayingVideoProvider>
             </ApProvider>
           </CursorProvider>
-        </PageViewedProvider>
-      </LenisProvider>
+        </LenisProvider>
+      </PageViewedProvider>
     </div>
   );
 }

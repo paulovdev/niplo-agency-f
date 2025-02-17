@@ -25,10 +25,6 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
     setCursorVariant("default");
   };
 
-  const handleClick = () => {
-    handleMouseLeave();
-  };
-
   return (
     <motion.div
       className="w-full"
@@ -38,7 +34,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
       animate={inView ? "animate" : "initial"}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
+      onClick={handleMouseLeave}
     >
       <motion.div
         className="relative size-full select-auto pointer-events-auto"

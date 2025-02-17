@@ -48,10 +48,11 @@ export const Cursor = () => {
     <>
       {!isTablet && (
         <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[100]"
+          className="fixed top-0 left-0 pointer-events-none z-[200]"
           style={{ x: smoothX, y: smoothY }}
         >
           <AnimatePresence mode="wait">
+            {cursorVariant === "default" && <motion.div className="hidden" />}
             {cursorVariant === "workSingle" && (
               <motion.div
                 className="size-full"
