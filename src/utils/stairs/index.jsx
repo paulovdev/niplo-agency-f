@@ -18,18 +18,16 @@ export default function Layout({ children, backgroundColor }) {
   const nbOfColumns = 4;
 
   return (
-    <AnimatePresence mode="wait">
-      <div className="page stairs" style={{ backgroundColor }}>
-        <motion.div {...anim(opacity)} className="transition-background" />
+    <div className="page stairs" style={{ backgroundColor }}>
+      <motion.div {...anim(opacity)} className="transition-background" />
 
-        <div className="transition-container">
-          {[...Array(nbOfColumns)].map((_, i) => {
-            return <motion.div key={i} {...anim(expand, nbOfColumns - i)} />;
-          })}
-        </div>
-
-        {children}
+      <div className="transition-container">
+        {[...Array(nbOfColumns)].map((_, i) => {
+          return <motion.div key={i} {...anim(expand, nbOfColumns - i)} />;
+        })}
       </div>
-    </AnimatePresence>
+
+      {children}
+    </div>
   );
 }

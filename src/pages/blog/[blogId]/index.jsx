@@ -8,15 +8,16 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const BlogView = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const router = useRouter();
   const { blogId } = router.query;
 
   const blog = blogsData.find((blog) => blog.id === String(blogId));
 
   if (!blog) return <p>Blog não encontrado</p>;
+ 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [router.asPath]);
 
   return (
     <Layout>

@@ -1,29 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
-import { useCursor } from "@/context/cursor-context";
 import worksData from "@/data/worksData";
 import Link from "next/link";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { imageVisible, textAnim, workAnimation } from "./anim";
-import { useAp } from "@/context/ap-context";
 import { RiArrowRightDownLine } from "react-icons/ri";
+import { useApStore, useCursorStore } from "@/store/zustandStore";
 
 const WorkGrade = ({ name, category, src, src2, year }) => {
-  const { setCursorVariant } = useCursor();
+  const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
 
   const { ref, inView } = useInView({
     threshold: 0.01,
     triggerOnce: true,
   });
-
-  const handleMouseEnter = () => {
-    setCursorVariant("workSingle");
-  };
-
-  const handleMouseLeave = () => {
-    setCursorVariant("default");
-  };
 
   return (
     <motion.div
@@ -32,9 +23,9 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
       variants={workAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
-      onMouseEnter={handleMouseEnter}
+      onMouseEnter={() => handleMouseEnter("workSingle")}
       onMouseLeave={handleMouseLeave}
-      onClick={handleMouseLeave}
+      onClick={() => handleClick("default")}
     >
       <motion.div
         className="relative size-full select-auto pointer-events-auto"
@@ -151,13 +142,11 @@ const WorkList = ({ name, category, src, year }) => {
 };
 
 const Works = () => {
-  const { selectedAp } = useAp();
+  const { selectedAp } = useApStore();
 
   return (
     <>
       <div className="w-full h-full grid grid-cols-2 gap-[1rem] max-laptop:grid-cols-1">
-        {/* GRID */}
-
         {selectedAp === "grid" &&
           worksData.map((i) => (
             <Link

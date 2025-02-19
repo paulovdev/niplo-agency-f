@@ -9,15 +9,20 @@ const AboutUs = () => {
   });
 
   const paragraph = [
-    "ACREDITAMOS QUE MARKETING E SUSTENTABILIDADE PODEM CRIAR UMA SINERGIA PODEROSA. NOSSA EQUIPE AJUDA ORGANIZAÇÕES A ALINHAR SEUS VALORES, AÇÕES E COMUNICAÇÃO, GARANTINDO QUE SUA MENSAGEM REFLITA AUTENTICAMENTE SEU COMPROMISSO COM UM FUTURO MELHOR. EM UM MUNDO ONDE A AUTENTICIDADE IMPORTA, PREENCHEMOS A LACUNA ENTRE PROPÓSITO E PERCEPÇÃO. POR MEIO DE NARRATIVAS ESTRATÉGICAS E ENGAJAMENTO SIGNIFICATIVO, AJUDAMOS AS MARCAS A TRANSFORMAR SUAS CONVICÇÕES EM HISTÓRIAS ENVOLVENTES QUE INSPIRAM CONFIANÇA E GERAM IMPACTO.",
-    "SLAPS ESTÁ PROCURANDO UM DIRETOR DE ARTE QUE SE DESTACA NA INTERSECÇÃO ENTRE ESTRATÉGIA CRIATIVA, DESIGN E CULTURA—ALGUÉM COMPROMETIDO EM ULTRAPASSAR LIMITES E DESAFIAR O STATUS QUO. ESTE PROFISSIONAL TEM UMA HABILIDADE COMPROVADA PARA LIDERAR EQUIPES NA CONCEPÇÃO DE IDEIAS EXTRAORDINÁRIAS E TRANSFORMÁ-LAS EM HISTÓRIAS IMPACTANTES QUE SE ALINHAM À VISÃO DE NOSSOS CLIENTES PARA MOLDAR INDÚSTRIAS.",
-    "SUSTENTABILIDADE NÃO É APENAS UM OBJETIVO—É UM MOVIMENTO. EMPODERAMOS ORGANIZAÇÕES A NAVEGAR POR ESSE CENÁRIO EM EVOLUÇÃO, CRIANDO MENSAGENS QUE RESSOAM E ESTRATÉGIAS QUE FAZEM A DIFERENÇA.",
+    "Este é um lugar onde os limites da realidade não nos impedem mais.",
+    "Um lugar de colaboração. Um lugar de criatividade. Um lugar onde a ",
+    "mundos são criados e ideias são formadas. fotografia virtual, o ",
+    "movimento e o design se cruzam.<br/><br/>",
+
+    "Um lugar onde Este não é um lugar comum. Este é um lugar onde",
+    "os limites são ultrapassados. Este é um lugar maravilhoso, ",
+    "onde tudo é possível. Venha caminhar conosco.",
   ];
 
   return (
     <section
       ref={ref}
-      className="h-full pt-[50px] pb-[50px] border-b border-border flex items-start select-none pointer-events-none max-laptop:flex-col"
+      className="h-full pt-[150px] pb-[150px] flex items-start select-none pointer-events-none max-laptop:flex-col"
     >
       <div className="w-full flex-[2] max-laptop:mb-[2.5rem]">
         <h2 className="font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase">
@@ -25,7 +30,7 @@ const AboutUs = () => {
         </h2>
       </div>
 
-      <div className="w-full flex-[3] flex flex-col items-start justify-start">
+      <div className="w-full flex-[3.5] flex flex-col items-start justify-start">
         {paragraph.map((text, i) => (
           <div className="w-full overflow-hidden" key={i}>
             <motion.p
@@ -34,10 +39,9 @@ const AboutUs = () => {
               variants={pSlideParagraphAnim}
               initial="initial"
               animate={inView ? "animate" : ""}
-              className="mb-[1rem] font-general text-color text-[.9rem] font-[500] tracking-[-.9px] uppercase"
-            >
-              {text}
-            </motion.p>
+              className="font-inter text-color text-[2.5rem] font-[450] tracking-[-0.01em] leading-[1.1]"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
           </div>
         ))}
 

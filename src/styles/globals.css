@@ -171,7 +171,7 @@ body {
   left: 0;
 }
 
-.stairs .transition-text {
+.preloader .transition-text {
   position: fixed !important;
   width: 100vw;
   height: 100dvh;
@@ -200,5 +200,5 @@ body {
   opacity: 0.04;
   z-index: 1000;
   pointer-events: none;
-  background: url("https://github.com/paulovdev/pxulin-producer/blob/master/public/noise.gif?raw=true");
+  background: url("../../public/noise.gif");
 }

@@ -1,5 +1,4 @@
 "use client";
-import DynamicImage from "@/components/reusable/dynamic-image";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
@@ -7,16 +6,16 @@ import { useRef } from "react";
 const Hero = ({ srcView, name }) => {
   const container = useRef();
   const { scrollYProgress } = useScroll({
-    target: container,
+    ref: container,
     offset: ["start start", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"]);
   return (
-    <section className="relative w-screen h-screen">
+    <section className="relative w-screen h-screen" ref={container}>
       <div className="h-screen overflow-hidden">
         <motion.div style={{ y }} className="relative h-full">
-          <DynamicImage
+          <Image
             src={srcView}
             alt={name}
             width={1920}

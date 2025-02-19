@@ -6,16 +6,15 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { useCursor } from "@/context/cursor-context";
 import { useMedia } from "react-use";
 import { useEffect, useState } from "react";
-import { usePlayVideo } from "@/context/several-context";
 import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { useCursorStore, usePlayingVideoStore } from "@/store/zustandStore";
 
 export const Cursor = () => {
-  const { cursorVariant } = useCursor();
-  const { isPlaying } = usePlayVideo();
+  const { cursorVariant } = useCursorStore();
+  const { isPlaying } = usePlayingVideoStore();
   const router = useRouter();
   const isTablet = useMedia("(max-width: 768px)");
   const { scrollY } = useScroll();
@@ -34,15 +33,15 @@ export const Cursor = () => {
 
   useEffect(() => {
     const manageMouseMove = (e) => {
-      mouseX.set(e.clientX - -30);
-      mouseY.set(e.clientY - 0);
+      mouseX.set(e.clientX + 30);
+      mouseY.set(e.clientY);
     };
 
     window.addEventListener("mousemove", manageMouseMove);
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
     <>
@@ -52,38 +51,25 @@ export const Cursor = () => {
           style={{ x: smoothX, y: smoothY }}
         >
           <AnimatePresence mode="wait">
-            {cursorVariant === "default" && <motion.div className="hidden" />}
-            {cursorVariant === "workSingle" && (
-              <motion.div
-                className="size-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                exit={{ opacity: 0, transition: { duration: 0.25 } }}
-              >
+            <motion.div
+              className="size-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.5 } }}
+              exit={{ opacity: 0, transition: { duration: 0.25 } }}
+              key={cursorVariant}
+            >
+              {cursorVariant === "default" && <div className="hidden"></div>}
+              {cursorVariant === "workSingle" && (
                 <p className="text-color3 text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase">
                   conferir este trabalho
                 </p>
-              </motion.div>
-            )}
-            {cursorVariant === "playReel" && (
-              <motion.div
-                className="size-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              >
+              )}
+              {cursorVariant === "playReel" && (
                 <p className="text-color3 text-[.8rem] font-[500] font-general tracking-[-.5px] uppercase">
                   {isPlaying ? "clique para pausar" : "clique para assistir"}
                 </p>
-              </motion.div>
-            )}
-            {cursorVariant === "scrollText" && (
-              <motion.div
-                className="size-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              >
+              )}
+              {cursorVariant === "scrollText" && (
                 <p className="text-color text-[2rem]">
                   {scrollDirection === "down" ? (
                     <RiArrowDownLine />
@@ -91,15 +77,8 @@ export const Cursor = () => {
                     <RiArrowUpLine />
                   )}
                 </p>
-              </motion.div>
-            )}
-            {cursorVariant === "blog" && (
-              <motion.div
-                className="size-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              >
+              )}
+              {cursorVariant === "blog" && (
                 <p
                   className={`${
                     router.pathname === "/blog" ? "text-color3" : "text-color"
@@ -107,8 +86,8 @@ export const Cursor = () => {
                 >
                   ler artigo
                 </p>
-              </motion.div>
-            )}
+              )}
+            </motion.div>{" "}
           </AnimatePresence>
         </motion.div>
       )}

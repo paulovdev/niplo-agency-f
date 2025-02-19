@@ -1,43 +1,29 @@
-"use client";
-import { useAp } from "@/context/ap-context";
-import { useCursor } from "@/context/cursor-context";
 import blogsData from "@/data/blogsData";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { blogAnimation } from "./anim";
+import { useApStore, useCursorStore } from "@/store/zustandStore";
 
 const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
-  const { setCursorVariant } = useCursor();
+  const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
 
   const { ref, inView } = useInView({
     threshold: 0.01,
     triggerOnce: true,
   });
 
-  const handleMouseEnter = () => {
-    setCursorVariant("blog");
-  };
-
-  const handleMouseLeave = () => {
-    setCursorVariant("default");
-  };
-
-  const handleClick = () => {
-    handleMouseLeave();
-  };
-
   return (
     <motion.div
       className="relative size-full flex items-center justify-start gap-[1.5rem] mb-0 flex-col cursor-default"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
       ref={ref}
       variants={blogAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
+      onMouseEnter={() => handleMouseEnter("blog")}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => handleClick("default")}
     >
       <div className="w-full">
         <Image
@@ -114,7 +100,7 @@ const BlogList = ({ id, img, title, category, min, titleDescription }) => {
 };
 
 export default function Blogs() {
-  const { selectedAp } = useAp();
+  const { selectedAp } = useApStore();
   return (
     <>
       <div className="pt-[50px] grid grid-cols-3 gap-[1.5rem] max-tablet:grid-cols-1 max-laptop:grid-cols-2">

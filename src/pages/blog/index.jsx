@@ -7,12 +7,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useWindowScroll } from "react-use";
-import { useAp } from "@/context/ap-context";
 import { dropYAnim } from "@/components/works-components/anim";
 import Menu from "@/components/reusable/menu/menu";
+import { useApStore } from "@/store/zustandStore";
 
 export default function Blog() {
-  const { selectedAp } = useAp();
+  const { selectedAp } = useApStore();
   const { y } = useWindowScroll();
   const [scrolled, setScrolled] = useState(false);
   const { ref, inView } = useInView({

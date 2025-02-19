@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Hero from "@/components/home-components/hero/hero";
 import Works from "@/components/home-components/works";
 import AboutUs from "@/components/home-components/aboutUs";
 import LayoutHome from "@/utils/preloader";
-import Reel from "@/components/home-components/reel";
-import { useEffect, useState } from "react";
 import Layout from "@/utils/stairs";
+import Reel from "@/components/home-components/reel";
 import ScrollText from "@/components/home-components/scroll-text";
 import MarqueeText from "@/components/home-components/marquee";
 import Awards from "@/components/home-components/awards";
@@ -13,25 +13,25 @@ import Video from "@/components/about-components/video";
 import Blogs from "@/components/home-components/blog";
 
 const Home = () => {
-  const [pageViewed, setPageViewed] = useState(false);
- 
+  const [firstTime, setFirstTime] = useState(null); // Inicializa como null para evitar hidratação errada
+
   useEffect(() => {
-  
-      // Simulate delay for checking sessionStorage or localStorage
-      const hasVisited = sessionStorage.getItem("visited");
+    if (typeof window !== "undefined") {
+      // Garante que estamos no cliente
+      const hasVisited = sessionStorage.getItem("visited") === "true";
 
       if (!hasVisited) {
         sessionStorage.setItem("visited", "true");
-        setPageViewed(false);
+        setFirstTime(false); // Marca como false se for a segunda visita
       } else {
-        setPageViewed(true);
+        setFirstTime(true); // Marca como true se for a primeira visita
       }
- 
-    
-     
+    }
   }, []);
 
+  if (firstTime === null) return null;
 
+  console.log("Estado de firstTime:", firstTime);
 
   return (
     <>
@@ -69,28 +69,27 @@ const Home = () => {
         <meta name="twitter:image" content="/images/seo-image.jpg" />
         <meta name="robots" content="index, follow" />
       </Head>
+      {!firstTime && <LayoutHome />}
 
-      {pageViewed ? <Layout /> : <LayoutHome />}
-
-      <main className="relative min-h-screen">
-        <Hero />
-        <div className="px-[2.5rem] max-laptop:px-[1rem]">
-          <AboutUs />
-          <Works />
-        </div>
-        <MarqueeText />
-
-        <div className="px-[2.5rem] max-laptop:px-[1rem]">
-          <Reel />
-        </div>
-        <ScrollText />
-
-        <Video />
-        <div className="px-[2.5rem] max-laptop:px-[1rem]">
-          <Awards />
-          <Blogs />
-        </div>
-      </main>
+      <Layout>
+        <main className="relative min-h-screen">
+          <Hero firstTime={firstTime} />
+          <div className="px-[2.5rem] max-laptop:px-[1rem]">
+            <AboutUs />
+            <Works />
+          </div>
+          <MarqueeText />
+          <div className="px-[2.5rem] max-laptop:px-[1rem]">
+            <Reel />
+          </div>
+          <ScrollText />
+          <Video />
+          <div className="px-[2.5rem] max-laptop:px-[1rem]">
+            <Awards />
+            <Blogs />
+          </div>
+        </main>
+      </Layout>
     </>
   );
 };

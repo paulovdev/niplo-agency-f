@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { menu, navigationsTextAnim } from "./anim";
-import { useAp } from "@/context/ap-context";
+import { useApStore } from "@/store/zustandStore";
 import { SiVerizon } from "react-icons/si";
 
 const PerspectiveMenuText = ({ label, apActive }) => (
@@ -35,7 +35,7 @@ const HamburguerMenu = ({ isOpen, onClick }) => (
 );
 
 const MenuContent = ({ isOpen, closeMenuAfterSelectAp }) => {
-  const { selectedAp, setSelectedAp } = useAp();
+  const { selectedAp, setSelectedAp } = useApStore();
   const navigationsMenuText = [
     { name: "GRADE", change: "grid" },
     { name: "LISTA", change: "list" },
@@ -76,7 +76,7 @@ const MenuContent = ({ isOpen, closeMenuAfterSelectAp }) => {
               initial="initial"
               whileHover="hover"
               onClick={() => {
-                setSelectedAp(item.change);
+                setSelectedAp(item.change); // Atualizando o estado com Zustand
                 scrollTo({ top: 0 });
                 closeMenuAfterSelectAp();
               }}

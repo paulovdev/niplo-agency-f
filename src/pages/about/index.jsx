@@ -4,11 +4,11 @@ import Hero from "../../components/about-components/hero";
 import Paragraph from "@/components/about-components/paragraph";
 import Awards from "@/components/about-components/awards";
 import Stats from "@/components/about-components/stats";
-import Curve from "@/utils/stairs";
+import Layout from "@/utils/stairs";
 
 const About = () => {
   return (
-    <Curve>
+    <Layout>
       <Head>
         <title>Agência N® | Sobre Nós</title>
         <meta
@@ -63,7 +63,7 @@ const About = () => {
           <Awards />
         </div>
       </section>
-    </Curve>
+    </Layout>
   );
 };
 

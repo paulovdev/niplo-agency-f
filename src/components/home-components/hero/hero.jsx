@@ -9,6 +9,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePageViewed } from "@/context/page-viewed-context";
+import { usePageViewedStore } from "@/store/zustandStore";
 
 const FirstPhraseText = ({ onComplete }) => {
   const firstPhrase = ["A", "G", "Ê", "N", "C", "I", "A", "—", "N"];
@@ -41,15 +42,13 @@ const FirstPhraseText = ({ onComplete }) => {
   );
 };
 
-const Hero = () => {
+const Hero = ({ firstTime }) => {
   const container = useRef(null);
   const { startLenis } = useLenis();
-  const { pageViewed } = usePageViewed();
 
   const [animH1, setAnimH1] = useState(false);
   const [animR, setAnimR] = useState(false);
   const [animP, setAnimP] = useState(false);
-  console.log(pageViewed);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end start"],
@@ -58,10 +57,10 @@ const Hero = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "80vh"]);
 
   useEffect(() => {
-    if (pageViewed || animR) {
+    if (firstTime || animR) {
       startLenis();
     }
-  }, [pageViewed, animR]);
+  }, [animR]);
 
   useEffect(() => {
     if (animR) {
@@ -86,7 +85,7 @@ const Hero = () => {
             animate="animate"
             className="size-full"
             onAnimationComplete={() => setAnimH1(true)}
-            custom={pageViewed ? 0.25 : 3}
+            custom={firstTime ? 0.25 : 3}
           >
             <Image
               src="/bg.avif"

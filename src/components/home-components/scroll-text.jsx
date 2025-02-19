@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import servicesData from "@/data/servicesData";
-import { useCursor } from "@/context/cursor-context";
+import { useCursorStore } from "@/store/zustandStore";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,13 +20,7 @@ export const firstPhraseAnimation = {
 };
 
 const ScrollText = () => {
-  const { setCursorVariant } = useCursor();
-  const handleMouseEnter = () => {
-    setCursorVariant("scrollText");
-  };
-  const handleMouseLeave = () => {
-    setCursorVariant("default");
-  };
+  const { handleMouseEnter, handleMouseLeave } = useCursorStore();
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -68,7 +62,7 @@ const ScrollText = () => {
     <>
       <section
         className="w-screen h-full select-none"
-        onMouseEnter={handleMouseEnter}
+        onMouseEnter={() => handleMouseEnter("scrollText")}
         onMouseLeave={handleMouseLeave}
       >
         <div

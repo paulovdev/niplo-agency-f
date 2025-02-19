@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import { h1SlideTextAnim, pAnim, textAnim } from "./anim";
 import CountUp from "react-countup";
 
@@ -11,7 +11,7 @@ const randomTexts = [
   "Onde a originalidade encontra a estratégia inteligente.",
 ];
 
-export default function LayoutHome({ children }) {
+export default function LayoutHome({ children, router }) {
   const [selectedText, setSelectedText] = useState(randomTexts[0]);
 
   useEffect(() => {
@@ -21,14 +21,13 @@ export default function LayoutHome({ children }) {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      <div className="page stairs">
+    <>
+      <motion.div className="preloader">
         <motion.div
           className="transition-text flex flex-col items-center justify-center "
           variants={textAnim}
           initial="initial"
           animate="animate"
-          exit="exit"
         >
           <div className="w-full h-full flex items-end justify-center ">
             <motion.p
@@ -36,7 +35,6 @@ export default function LayoutHome({ children }) {
               variants={pAnim}
               initial="initial"
               animate="animate"
-              exit="exit"
             >
               {selectedText}
             </motion.p>
@@ -47,7 +45,6 @@ export default function LayoutHome({ children }) {
               variants={h1SlideTextAnim}
               initial="initial"
               animate="animate"
-              exit="exit"
             >
               <h1 className="text-[.9rem] text-center text-color3 font-general font-[500] leading-[1]">
                 <CountUp delay={0.5} duration={2} end={100} />%
@@ -55,8 +52,8 @@ export default function LayoutHome({ children }) {
             </motion.div>
           </div>
         </motion.div>
-      </div>
-      {children}
-    </AnimatePresence>
+        {children}
+      </motion.div>
+    </>
   );
 }

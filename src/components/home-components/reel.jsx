@@ -1,23 +1,16 @@
-import { useCursor } from "@/context/cursor-context";
-import { usePlayVideo } from "@/context/several-context";
 import { useRef } from "react";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { motion } from "framer-motion";
 import { useLenis } from "@/context/lenis-context";
+import { useCursorStore, usePlayingVideoStore } from "@/store/zustandStore";
+import { useCursor } from "@/context/cursor-context";
 
 const Reel = () => {
-  const { setCursorVariant } = useCursor();
-  const { isPlaying, setIsPlaying } = usePlayVideo();
+  const { handleMouseEnter, handleMouseLeave } = useCursorStore();
+
+  const { isPlaying, setIsPlaying } = usePlayingVideoStore();
   const { startLenis, stopLenis } = useLenis();
   const ref = useRef(null);
-
-  const handleEnter = () => {
-    setCursorVariant("playReel");
-  };
-
-  const handleLeave = () => {
-    setCursorVariant("default");
-  };
 
   const togglePlayPause = () => {
     if (ref.current) {
@@ -42,11 +35,7 @@ const Reel = () => {
   return (
     <motion.section
       className={`flex items-center justify-center transition-all duration-1000
-        ${
-          isPlaying
-            ? "fixed inset-0 z-50"
-            : "relative max-tablet:p-0"
-        }`}
+        ${isPlaying ? "fixed inset-0 z-50" : "relative max-tablet:p-0"}`}
       variants={reelAnim}
       initial="initial"
       animate={isPlaying ? "open" : "initial"}
@@ -63,8 +52,8 @@ const Reel = () => {
         loop
         muted
         onClick={togglePlayPause}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
+        onMouseEnter={() => handleMouseEnter("playReel")}
+        onMouseLeave={handleMouseLeave}
       />
 
       <div className="absolute pointer-events-none flex items-center justify-center w-full h-full">

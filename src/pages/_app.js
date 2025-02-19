@@ -1,33 +1,21 @@
 import "@/styles/globals.css";
 import { Cursor } from "@/utils/cursor";
-import { AnimatePresence } from "framer-motion";
-import { CursorProvider } from "@/context/cursor-context";
 import Nav from "@/components/nav/navbar";
-import { PlayingVideoProvider } from "@/context/several-context";
 import Footer from "@/components/footer/footer";
-import { ApProvider } from "@/context/ap-context";
 import { LenisProvider } from "@/context/lenis-context";
-import { PageViewedProvider } from "@/context/page-viewed-context";
+import { AnimatePresence } from "framer-motion";
 
 export default function App({ Component, pageProps, router }) {
   return (
     <div className="main noise">
-      <PageViewedProvider>
-        <LenisProvider>
-          <CursorProvider>
-            <ApProvider>
-              <PlayingVideoProvider>
-                <Cursor />
-                <Nav />
-                <AnimatePresence mode="wait">
-                  <Component key={router.route} {...pageProps} />
-                </AnimatePresence>
-                <Footer />
-              </PlayingVideoProvider>
-            </ApProvider>
-          </CursorProvider>
-        </LenisProvider>
-      </PageViewedProvider>
+      <LenisProvider>
+        <Nav />
+        <Cursor />
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+        <Footer />
+      </LenisProvider>
     </div>
   );
 }

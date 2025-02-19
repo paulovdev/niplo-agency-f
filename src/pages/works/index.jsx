@@ -3,15 +3,15 @@ import { dropYAnim } from "@/components/works-components/anim";
 import Hero from "@/components/works-components/hero";
 import Menu from "@/components/reusable/menu/menu";
 import Works from "@/components/works-components/works";
-import { useAp } from "@/context/ap-context";
 import Layout from "@/utils/stairs";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useWindowScroll } from "react-use";
+import { useApStore} from "@/store/zustandStore";
 
 const WorksPage = () => {
-  const { selectedAp } = useAp();
+  const { selectedAp } = useApStore();
   const [scrolled, setScrolled] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.1,
