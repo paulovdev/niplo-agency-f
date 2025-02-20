@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="w-full h-[100dvh] my-0 mx-auto py-[2rem] flex flex-col items-end justify-end ">
+    <div className="w-full h-screen my-0 mx-auto py-[2rem] flex flex-col items-end justify-end ">
       <div className="w-full flex items-center justify-between">
         <h1 className="text-[15vw] text-center font-[400] leading-[1]  max-laptop:font-[600]">
           CREATIVE

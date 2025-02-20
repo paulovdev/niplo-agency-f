@@ -71,7 +71,7 @@ const Hero = ({ firstTime }) => {
   }, [animR]);
 
   return (
-    <div className="w-screen h-[100dvh] overflow-hidden relative">
+    <div className="w-screen h-screen overflow-hidden relative">
       <motion.div
         ref={container}
         style={{ y }}

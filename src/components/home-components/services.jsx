@@ -36,7 +36,7 @@ const MaskBackground = ({ src, title, description, id }) => {
     <div
       ref={container}
       key={id}
-      className="w-screen h-[100dvh] overflow-hidden relative"
+      className="w-screen h-screen overflow-hidden relative"
     >
       <motion.div
         style={{ y }}

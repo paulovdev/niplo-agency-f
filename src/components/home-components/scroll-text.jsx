@@ -66,7 +66,7 @@ const ScrollText = () => {
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className="w-full h-[100dvh] flex flex-col items-center justify-center"
+          className="w-full h-[100vh] flex flex-col items-center justify-center"
           id="clip"
         >
           {servicesData.map((section, index) => (

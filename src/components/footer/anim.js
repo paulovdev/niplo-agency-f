@@ -19,7 +19,7 @@ export const menuAnim = {
     },
   },
   open: {
-    height: "100dvh",
+    height: "100vh",
     transition: {
       duration: 0.8,
       type: "tween",

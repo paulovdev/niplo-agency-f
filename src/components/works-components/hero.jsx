@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <div className="w-full h-[70dvh] my-0 mx-auto py-[2rem] flex flex-col items-start justify-end">
+    <div className="w-full h-[70vh] my-0 mx-auto py-[2rem] flex flex-col items-start justify-end">
       <p className="max-w-[600px] w-full text-color text-[.9rem] tracking-[-.5px] font-[500] uppercase">
         de 2015 até 2025
       </p>
