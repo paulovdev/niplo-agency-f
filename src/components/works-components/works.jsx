@@ -28,12 +28,12 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
       onClick={() => handleClick("default")}
     >
       <motion.div
-        className="relative size-full select-auto pointer-events-auto"
+        className="relative size-full bg-background2 select-auto pointer-events-auto"
         initial="initial"
         whileHover="hover"
       >
         <Image
-          className="max-w-[1200px] w-full max-h-[650px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%] max-tablet:h-[350px] max-laptop:h-[600px] cursor-default"
+          className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%] cursor-default"
           src={src}
           alt={name}
           width={1200}
@@ -44,10 +44,10 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="absolute top-0 left-0 size-full rounded-[.5rem]"
+          className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem]"
         >
           <Image
-            className="max-w-[1200px] w-full max-h-[650px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
+            className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
             src={src2}
             alt={name}
             width={1200}
