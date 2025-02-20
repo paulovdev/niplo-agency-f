@@ -7,10 +7,11 @@ import { motion } from "framer-motion";
 import { workAnimation, textAnim } from "./anim";
 
 import { useCursorStore } from "@/store/zustandStore";
+import { useMedia } from "react-use";
 
 const Work = ({ name, category, src, src2, year }) => {
   const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
-
+  const isTablet = useMedia("(max-width: 768px)");
   const { ref, inView } = useInView({
     threshold: 0.01,
     triggerOnce: true,
@@ -39,12 +40,12 @@ const Work = ({ name, category, src, src2, year }) => {
           width={1200}
           height={1200}
         />
-
+{!isTablet &&
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem]"
+          className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
         >
           <Image
             className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
@@ -54,7 +55,7 @@ const Work = ({ name, category, src, src2, year }) => {
             height={1200}
           />
         </motion.div>
-
+}
         <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
           <motion.div className="relative size-full" variants={textAnim}>
             <div className="w-full flex items-center justify-between">
