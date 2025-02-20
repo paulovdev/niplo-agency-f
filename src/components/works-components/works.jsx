@@ -33,7 +33,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
         whileHover="hover"
       >
         <Image
-          className="w-full h-[85vh] rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%] max-tablet:h-[350px] max-laptop:h-[600px] cursor-default"
+          className="max-w-[1200px] w-full max-h-[650px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%] max-tablet:h-[350px] max-laptop:h-[600px] cursor-default"
           src={src}
           alt={name}
           width={1200}
@@ -47,9 +47,9 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
           className="absolute top-0 left-0 size-full rounded-[.5rem]"
         >
           <Image
-            className="size-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
+            className="max-w-[1200px] w-full max-h-[650px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
             src={src2}
-            alt={`${name} - Hover`}
+            alt={name}
             width={1200}
             height={1200}
           />
