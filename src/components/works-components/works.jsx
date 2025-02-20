@@ -20,10 +20,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
   return (
     <motion.div
       className="w-full"
-      ref={ref}
-      variants={workAnimation}
-      initial="initial"
-      animate={inView ? "animate" : "initial"}
+     
       onMouseEnter={() => handleMouseEnter("workSingle")}
       onMouseLeave={handleMouseLeave}
       onClick={() => handleClick("default")}
@@ -40,22 +37,22 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
           width={1200}
           height={1200}
         />
-{!isTablet&&
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
-        >
-          <Image
-            className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
-            src={src2}
-            alt={name}
-            width={1200}
-            height={1200}
-          />
-        </motion.div>
-}
+        {!isTablet && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
+          >
+            <Image
+              className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
+              src={src2}
+              alt={name}
+              width={1200}
+              height={1200}
+            />
+          </motion.div>
+        )}
         <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
           <motion.div className="relative size-full" variants={textAnim}>
             <div className="w-full h-[30px] flex items-center justify-between max-tablet:hidden"></div>
