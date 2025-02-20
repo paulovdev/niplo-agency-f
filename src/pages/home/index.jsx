@@ -13,7 +13,7 @@ import Video from "@/components/about-components/video";
 import Blogs from "@/components/home-components/blog";
 
 const Home = () => {
-  const [firstTime, setFirstTime] = useState(null); // Inicializa como null para evitar hidratação errada
+  const [firstTime, setFirstTime] = useState(null); 
 
   useEffect(() => {
     if (typeof window !== "undefined") {

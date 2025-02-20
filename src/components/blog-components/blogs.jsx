@@ -10,7 +10,7 @@ const BlogGrid = ({ id, img, title, category, min, titleDescription }) => {
   const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
 
   const { ref, inView } = useInView({
-    threshold: 0.01,
+    threshold: 0.4,
     triggerOnce: true,
   });
 

@@ -14,7 +14,7 @@ const AboutUs = () => {
     "mundos são criados e ideias são formadas. fotografia virtual, o ",
     "movimento e o design se cruzam.<br/><br/>",
 
-    "Um lugar onde Este não é um lugar comum. Este é um lugar onde",
+    "Um lugar onde este não é um lugar comum. Este é um lugar onde",
     "os limites são ultrapassados. Este é um lugar maravilhoso, ",
     "onde tudo é possível. Venha caminhar conosco.",
   ];
@@ -22,7 +22,7 @@ const AboutUs = () => {
   return (
     <section
       ref={ref}
-      className="h-full pt-[150px] pb-[150px] flex items-start select-none pointer-events-none max-laptop:flex-col"
+      className="h-full pt-[150px] pb-[150px] flex items-start select-none pointer-events-none max-laptop:flex-col max-laptop:pt-[50px] max-laptop:pb-[50px]"
     >
       <div className="w-full flex-[2] max-laptop:mb-[2.5rem]">
         <h2 className="font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase">

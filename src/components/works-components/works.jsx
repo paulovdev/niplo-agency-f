@@ -13,17 +13,20 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
   const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
   const isTablet = useMedia("(max-width: 768px)");
   const { ref, inView } = useInView({
-    threshold: 0.01,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   return (
     <motion.div
-      className="w-full"
-     
-      onMouseEnter={() => handleMouseEnter("workSingle")}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => handleClick("default")}
+      className="w-full cursor-default"
+      ref={ref}
+      animate={inView ? "animate" : "initial"}
+      onMouseEnter={
+        !isTablet ? () => handleMouseEnter("workSingle") : undefined
+      }
+      onMouseLeave={!isTablet ? handleMouseLeave : undefined}
+      onClick={!isTablet ? () => handleClick("default") : undefined}
     >
       <motion.div
         className="relative size-full bg-background2 select-auto pointer-events-auto"
@@ -34,8 +37,9 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
           className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%] cursor-default"
           src={src}
           alt={name}
-          width={1200}
-          height={1200}
+          width={800}
+          height={900}
+          priority={false}
         />
         {!isTablet && (
           <motion.div
@@ -48,8 +52,9 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
               className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
               src={src2}
               alt={name}
-              width={1200}
-              height={1200}
+              width={800}
+              height={900}
+              priority={false}
             />
           </motion.div>
         )}
@@ -81,7 +86,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
 
 const WorkList = ({ name, category, src, year }) => {
   const { ref, inView } = useInView({
-    threshold: 0.01,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
@@ -123,8 +128,9 @@ const WorkList = ({ name, category, src, year }) => {
           <Image
             src={src}
             alt="asd"
-            width={1200}
-            height={1200}
+            width={800}
+            height={900}
+            priority={false}
             className="absolute top-[-200px] w-[400px] h-[400px] rounded-[.25rem] object-cover "
           />
         </motion.div>

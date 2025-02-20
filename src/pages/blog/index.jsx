@@ -16,7 +16,7 @@ export default function Blog() {
   const { y } = useWindowScroll();
   const [scrolled, setScrolled] = useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    threshold: 0.4,
     triggerOnce: false,
   });
 

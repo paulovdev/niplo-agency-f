@@ -43,18 +43,11 @@ const FirstPhraseText = ({ onComplete }) => {
 };
 
 const Hero = ({ firstTime }) => {
-  const container = useRef(null);
   const { startLenis } = useLenis();
 
   const [animH1, setAnimH1] = useState(false);
   const [animR, setAnimR] = useState(false);
   const [animP, setAnimP] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0vh", "80vh"]);
 
   useEffect(() => {
     if (firstTime || animR) {
@@ -72,11 +65,7 @@ const Hero = ({ firstTime }) => {
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
-      <motion.div
-        ref={container}
-        style={{ y }}
-        className="h-full p-[2.5rem] max-laptop:p-[1rem]"
-      >
+      <div className="h-full p-[2.5rem] max-laptop:p-[1rem]">
         <div className="absolute top-0 left-0 w-screen h-screen bg-white z-[-1]" />
         <div className="absolute top-0 left-0 w-screen h-screen z-[-1]">
           <motion.div
@@ -127,7 +116,7 @@ const Hero = ({ firstTime }) => {
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

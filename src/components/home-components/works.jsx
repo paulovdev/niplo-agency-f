@@ -13,20 +13,21 @@ const Work = ({ name, category, src, src2, year }) => {
   const { handleMouseEnter, handleMouseLeave, handleClick } = useCursorStore();
   const isTablet = useMedia("(max-width: 768px)");
   const { ref, inView } = useInView({
-    threshold: 0.01,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   return (
     <motion.div
       className="w-full cursor-default"
-      ref={ref}
       variants={workAnimation}
-      initial="initial"
-      animate={"animate"}
-      onMouseEnter={() => handleMouseEnter("workSingle")}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => handleClick("default")}
+      ref={ref}
+      animate={inView ? "animate" : "initial"}
+      onMouseEnter={
+        !isTablet ? () => handleMouseEnter("workSingle") : undefined
+      }
+      onMouseLeave={!isTablet ? handleMouseLeave : undefined}
+      onClick={!isTablet ? () => handleClick("default") : undefined}
     >
       <motion.div
         className="relative size-full bg-background2 select-auto pointer-events-auto"
@@ -34,11 +35,12 @@ const Work = ({ name, category, src, src2, year }) => {
         whileHover="hover"
       >
         <Image
-          className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%] max-tablet:h-[350px] max-laptop:h-[600px]"
+          className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%] cursor-default"
           src={src}
           alt={name}
-          width={1200}
-          height={1200}
+          width={800}
+          height={900}
+          priority={false}
         />
         {!isTablet && (
           <motion.div
@@ -48,16 +50,19 @@ const Work = ({ name, category, src, src2, year }) => {
             className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
           >
             <Image
-              className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem] object-cover object-[40%_20%] brightness-[85%]"
+              className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
               src={src2}
-              alt={`${name} - Hover`}
-              width={1200}
-              height={1200}
+              alt={name}
+              width={800}
+              height={900}
+              priority={false}
             />
           </motion.div>
         )}
         <div className="absolute w-full h-[30px] bottom-[15px] px-[2rem] overflow-hidden select-none pointer-events-none max-tablet:overflow-auto max-tablet:bottom-[10px] max-tablet:px-[1rem]">
           <motion.div className="relative size-full" variants={textAnim}>
+            <div className="w-full h-[30px] flex items-center justify-between max-tablet:hidden"></div>
+
             <div className="w-full flex items-center justify-between">
               <div className="w-full flex items-center gap-[1.5rem]">
                 <h1 className="font-general text-color3 text-[1rem] font-[500] tracking-[-.7px] uppercase">
@@ -67,7 +72,7 @@ const Work = ({ name, category, src, src2, year }) => {
                   {category}
                 </p>
               </div>
-              <div>
+              <div className="">
                 <span className="text-color3 text-[.9rem] font-[500] tracking-[-.7px] uppercase">
                   {year}
                 </span>
