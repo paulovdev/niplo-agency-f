@@ -20,6 +20,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
   return (
     <motion.div
       className="w-full cursor-default"
+      variants={workAnimation}
       ref={ref}
       animate={inView ? "animate" : "initial"}
       onMouseEnter={
@@ -34,7 +35,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
         whileHover="hover"
       >
         <Image
-          className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%] cursor-default"
+          className="max-w-[1200px] w-full max-h-[700px] h-full rounded-[.5rem] object-cover brightness-[85%] cursor-default"
           src={src}
           alt={name}
           width={800}
@@ -49,7 +50,7 @@ const WorkGrade = ({ name, category, src, src2, year }) => {
             className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
           >
             <Image
-              className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
+              className="max-w-[1200px] w-full max-h-[1000px] h-full rounded-[.5rem] object-cover brightness-[85%]"
               src={src2}
               alt={name}
               width={800}

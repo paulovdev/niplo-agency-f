@@ -5,14 +5,12 @@ import {
   imageAnim,
   pSlideTextAnim,
 } from "./anim";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { usePageViewed } from "@/context/page-viewed-context";
-import { usePageViewedStore } from "@/store/zustandStore";
+import { useEffect, useState } from "react";
 
 const FirstPhraseText = ({ onComplete }) => {
-  const firstPhrase = ["A", "G", "Ê", "N", "C", "I", "A", "—", "N"];
+  const firstPhrase = ["—", "U", "N", "U", "S", "U", "A", "L"];
   let completedAnimations = 0;
 
   const handleAnimationComplete = () => {
@@ -24,20 +22,23 @@ const FirstPhraseText = ({ onComplete }) => {
 
   return (
     <>
-      {firstPhrase.map((phrase, i) => (
-        <motion.h1
-          key={i}
-          custom={i}
-          variants={firstPhraseAnimation}
-          initial="initial"
-          animate="animate"
-          className="w-full text-[14.5vw] text-center text-color3 font-[400] leading-[1] tracking-[-10px] max-laptop:font-[600] max-laptop:text-[13vw] 
-          max-laptop:tracking-[-10px] max-tablet:tracking-[-10px]"
-          onAnimationComplete={handleAnimationComplete}
-        >
-          {phrase}
-        </motion.h1>
-      ))}
+      <h1 className="text-center uppercase flex-nowrap mt-0 mb-0 text-[15vw] font-[500] w-full leading-[1]">
+        <div className="relative inline-block ">
+          {firstPhrase.map((phrase, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              variants={firstPhraseAnimation}
+              initial="initial"
+              animate="animate"
+              className="relative inline-block text-color3 max-laptop:font-[600]"
+              onAnimationComplete={handleAnimationComplete}
+            >
+              {phrase}
+            </motion.div>
+          ))}
+        </div>
+      </h1>
     </>
   );
 };
@@ -76,33 +77,35 @@ const Hero = ({ firstTime }) => {
             onAnimationComplete={() => setAnimH1(true)}
             custom={firstTime ? 0.25 : 3}
           >
-            <Image
-              src="/bg.avif"
-              width={2000}
-              height={2000}
+            <video
+              src="/videos/home.mp4"
+              width={4000}
+              height={4000}
               alt="Background"
-              priority={true}
-              className="size-full object-cover object-[50%_70%] brightness-[80%]"
+              loop
+              autoPlay
+              muted
+              className="size-full object-cover object-[10%_15%] brightness-[80%]"
             />
           </motion.div>
         </div>
 
         <div className="w-full h-full flex flex-col items-end justify-end">
-          <div className="w-full flex items-center justify-between gap-[1rem]">
+          <div className="w-full flex items-center justify-between gap-[1rem] mix-blend-difference">
             {animH1 && <FirstPhraseText onComplete={() => setAnimR(true)} />}
+
             <motion.h1
               variants={comercialRAnimation}
               initial="initial"
               animate={animR ? "animate" : "initial"}
               onAnimationComplete={() => setAnimP(true)}
-              className={`h-full text-[8vw] text-color3 font-[600] max-tablet:text-[3.5rem] max-tablet:tracking-[-1px] max-laptop:font-[600] 
-                `}
+              className="inline-block relative text-[10vw] font-[500] text-color3 leading-[1]"
             >
               &#174;
             </motion.h1>
           </div>
 
-          <div className="w-full h-[50px] flex items-end justify-end">
+          <div className="w-full h-[50px] flex items-end justify-end mix-blend-difference">
             {animP && (
               <motion.p
                 className="max-w-[600px] w-full text-color3 font-general text-[.9rem] tracking-[-.5px] font-[400] uppercase max-tablet:text-[.7rem]"

@@ -20,9 +20,9 @@ export const firstPhraseAnimation = {
   animate: (i) => ({
     y: "0",
     transition: {
-      duration: 0.49,
+      duration: 0.45,
       ease: [0.33, 1, 0.68, 1],
-      delay: i * 0.02,
+      delay: i * 0.05,
     },
   }),
 };

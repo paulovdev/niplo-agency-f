@@ -24,11 +24,7 @@ const AboutUs = () => {
       ref={ref}
       className="h-full pt-[150px] pb-[150px] flex items-start select-none pointer-events-none max-laptop:flex-col max-laptop:pt-[50px] max-laptop:pb-[50px]"
     >
-      <div className="w-full flex-[2] max-laptop:mb-[2.5rem]">
-        <h2 className="font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase">
-          ✦ um pouco sobre nós
-        </h2>
-      </div>
+      <div className="w-full flex-[2]"></div>
 
       <div className="w-full flex-[3.5] flex flex-col items-start justify-start">
         {paragraph.map((text, i) => (
@@ -39,7 +35,7 @@ const AboutUs = () => {
               variants={pSlideParagraphAnim}
               initial="initial"
               animate={inView ? "animate" : ""}
-              className="font-inter text-color text-[2.5rem] font-[450] tracking-[-0.01em] leading-[1.1]"
+              className="font-inter text-color text-[2.25rem] font-[400] tracking-[-0.01em] leading-[1.1]"
               dangerouslySetInnerHTML={{ __html: text }}
             />
           </div>
@@ -55,7 +51,7 @@ const AboutUs = () => {
             transition: { duration: 0.4, delay: 0.5, ease: [0.42, 1, 0.74, 1] },
           }}
         >
-          <button className="w-[175px] h-[40px] bg-background3 rounded-full">
+          <button className="w-[200px] h-[40px] bg-background3 rounded-full">
             <span className="font-general text-color3 text-[.75rem] tracking-[-.3px] font-[600] uppercase">
               ver + sobre a gente
             </span>

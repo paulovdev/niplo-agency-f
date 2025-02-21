@@ -78,6 +78,7 @@ const worksData = [
       "/works/work-4/work-4-single/work-4-single-5.jpg",
     ],
   },
+
 ];
 
 export default worksData;

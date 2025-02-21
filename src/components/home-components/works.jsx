@@ -1,4 +1,3 @@
-import { useState } from "react";
 import worksData from "@/data/worksData";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,7 +34,7 @@ const Work = ({ name, category, src, src2, year }) => {
         whileHover="hover"
       >
         <Image
-          className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%] cursor-default"
+          className="max-w-[1200px] w-full max-h-[700px] h-full rounded-[.5rem] object-cover brightness-[85%] cursor-default"
           src={src}
           alt={name}
           width={800}
@@ -50,7 +49,7 @@ const Work = ({ name, category, src, src2, year }) => {
             className="absolute top-0 left-0 size-full bg-background2 rounded-[.5rem] max-tablet:hidden"
           >
             <Image
-              className="max-w-[1200px] w-full max-h-[800px] h-full rounded-[.5rem]  object-[40%_20%] brightness-[85%]"
+              className="max-w-[1200px] w-full max-h-[1000px] h-full rounded-[.5rem] object-cover brightness-[85%]"
               src={src2}
               alt={name}
               width={800}
@@ -88,17 +87,6 @@ const Work = ({ name, category, src, src2, year }) => {
 const Works = () => {
   return (
     <section className="relative pt-[50px] select-none pointer-events-none">
-      <h2 className="mb-[2rem] font-general text-color text-[.9rem] tracking-[-.5px] font-[600] uppercase flex items-end">
-        ✦ Últimos trabalhos
-        <span className="mx-[.5rem]"> / </span>
-        <Link
-          className="w-fit bg-background rounded-[2rem] underline select-auto pointer-events-auto"
-          href="/works"
-        >
-          ver todos
-        </Link>
-      </h2>
-
       <div className="grid-works size-full grid grid-cols-2 gap-[1rem] max-laptop:grid-cols-1">
         {worksData.slice(0, 4).map((i) => (
           <Link key={i.id} href={`/works/${i.id}`}>
@@ -117,6 +105,16 @@ const Works = () => {
             />
           </Link>
         ))}
+      </div>
+      <div className="py-12 w-full flex justify-end items-end">
+        <Link
+          className="w-[225px] h-[40px] bg-background3 rounded-full flex items-center justify-center select-auto pointer-events-auto cursor-default"
+          href="/works"
+        >
+          <span className="font-general text-color3 text-[.75rem] tracking-[-.5px] font-[600] uppercase">
+            ver todos os trabalhos
+          </span>
+        </Link>
       </div>
     </section>
   );

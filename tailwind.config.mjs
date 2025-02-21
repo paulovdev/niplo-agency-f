@@ -16,6 +16,7 @@ export default {
       },
       colors: {
         background: "var(--background)",
+        background2: "var(--background-2)",
         background3: "var(--background-3)",
         background4: "var(--background-4)",
         background5: "var(--background-5)",

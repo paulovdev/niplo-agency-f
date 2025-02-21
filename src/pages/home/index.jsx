@@ -13,7 +13,7 @@ import Video from "@/components/about-components/video";
 import Blogs from "@/components/home-components/blog";
 
 const Home = () => {
-  const [firstTime, setFirstTime] = useState(null); 
+  const [firstTime, setFirstTime] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
