@@ -1,24 +1,204 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* :root {
+  --background: #010101;
+  --background-2: #ebebeb;
+  --background-3: #ebebeb;
+  --background-4: #070707;
+  --background-5: #121212;
+
+  --border: #262626;
+  --border-2: #d8d8d8;
+
+  --color: #ffffff;
+  --color-2: #a8a8a8;
+  --color-3: #000000;
+} */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfcfc;
+  --background-2: #ebebeb;
+  --background-3: #090909;
+  --background-4: #070707;
+  --background-5: #0d0d11;
+
+  --border: #d8d8d8;
+  --border-2: #202020;
+
+  --color: #111111;
+  --color-2: #949494;
+  --color-3: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  width: 100dvw;
+  overflow-x: hidden;
+  font-family: "Neue Montreal";
+}
+
+@layer base {
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/general.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "inter";
+    src: url("/fonts/inter.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "robert-medium";
+    src: url("/fonts/robert-medium.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "robert-regular";
+    src: url("/fonts/robert-regular.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Light.otf") format("opentype");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Regular.otf") format("opentype");
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Medium.otf") format("opentype");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Bold.otf") format("opentype");
+    font-weight: 800;
+  }
+}
+
+@layer utilities {
+  .c-n {
+    @apply cursor-none;
+  }
+
+  .c-p {
+    @apply cursor-pointer;
+  }
+
+  .text-active {
+    @apply text-color2;
+  }
+  .about-text {
+    b {
+      @apply tracking-[-.8px] font-[500];
+    }
+  }
+  .about-paragraph:first-child {
+    p {
+      text-indent: 20vw;
+    }
+  }
+  .about-paragraph:nth-child(2) {
+    p {
+      text-indent: 10vw;
+    }
+  }
+  .blog-text {
+    h1 {
+      @apply mb-[2rem] text-[2.5rem] font-[500] font-inter tracking-[-2px] leading-[1.2] uppercase max-tablet:text-[2rem] max-mobile:text-[1.5rem];
+    }
+    p {
+      @apply mt-[2.1rem] mb-[-0.46em] text-[#303030] text-[18px] font-[400] tracking-[-0.003em] leading-[28px] max-tablet:text-[1rem];
+    }
+    b {
+      @apply tracking-[-1px] font-[600];
+    }
+  }
+
+  .footer-2-link-txt {
+    @apply font-general text-center text-color text-[.9rem] text-nowrap font-[500] tracking-[-.5px] leading-[1] uppercase;
+  }
+}
+
+.blog-text > p:first-of-type::first-letter {
+  initial-letter: 2 2;
+  color: #070707;
+  margin-right: 0.5rem;
+  font-weight: bolder;
+
+  font-family: "Times New Roman", Times, serif;
+}
+
+.stairs .transition-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.stairs .transition-container div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #050505;
+}
+
+.stairs .transition-background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #050505;
+  z-index: 998;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.preloader .transition-text {
+  position: fixed !important;
+  width: 100vw;
+  height: 100dvh;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+  cursor: wait;
+  top: 0;
+  left: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.noise::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  /* you can control opacity of noise  */
+  opacity: 0.04;
+  z-index: 1000;
+  pointer-events: none;
+  background: url("../../public/noise.gif");
 }
